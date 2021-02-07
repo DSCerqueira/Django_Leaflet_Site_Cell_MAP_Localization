@@ -158,11 +158,11 @@
                     <input type="color" name="colorsect" value="#ff0000">
                 </form>
                 <form style="padding-left: 10px;" method="GET" action="{% url 'kmlgenerator' %}">
-                    <button id="exportsite" type="submit" class="btn btn-primary" >Export KML sites</button>
+                    <button id="exportsite" type="submit" class="btn btn-primary" >Sites Visualization</button>
                     <input type="text" name="sectorclick" value="siteclick" hidden>
                 </form>
                 <form style="padding-left: 10px;" method="GET" action="{% url 'kmlgenerator' %}">
-                    <button id="exportsector" type="submit" class="btn btn-primary">Export KML sectors</button>
+                    <button id="exportsector" type="submit" class="btn btn-primary">Sectors Visualization</button>
                     <input type="text" name="sectorclick" value="sectorclick" hidden>
                 </form>
                 <form style="padding-left: 10px;" method="GET" action="{% url 'clearmap' %}" >
@@ -181,7 +181,7 @@
                   <button  id="uploadkml" class="btn btn-primary">Upload KML</button>
                   <input type="file"  name="file" style="display: inline-block" accept=".kml"/>
               </form>
-              <a href="{%url 'exportkml'%}">download</a>
+              <a href="{%url 'exportkml'%}">download kml</a>
         </div>
 
         <!-- Buttons rename Script -->
