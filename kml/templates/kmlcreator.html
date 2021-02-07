@@ -182,13 +182,15 @@
                   <input type="file"  name="file" style="display: inline-block" accept=".kml"/>
               </form>
               <form style="padding-left: 10px;" method="GET" action="{% url 'exportkml' %}">
-                    <button id="downsector" type="submit" class="btn btn-primary" >download kml sectors</button>
+                    <button id="downsector" type="submit" class="btn btn-primary" >Run kml sectors</button>
                     <input type="text" name="sectorclick" value="sectorclick" hidden>
               </form>
              <form style="padding-left: 10px;" method="GET" action="{% url 'exportkml' %}">
-                    <button id="downsite" type="submit" class="btn btn-primary" >download kml sites</button>
+                    <button id="downsite" type="submit" class="btn btn-primary" >Run kml sites</button>
                     <input type="text" name="sectorclick" value="siteclick" hidden>
               </form>
+
+            <p><a href="{% url 'downkml' %}">Download Kml</a></p>
 
         </div>
 
@@ -280,6 +282,14 @@
                  customBtpoload.click();
                  });
             customkmlloadsec.addEventListener("click",function() {
+                 customBtpoload.click();
+                 });
+
+            <!-- creating sites/sector kml -->
+            customSitedown.addEventListener("click",function() {
+                 customBtpoload.click();
+                 });
+            customSectordown.addEventListener("click",function() {
                  customBtpoload.click();
                  });
 

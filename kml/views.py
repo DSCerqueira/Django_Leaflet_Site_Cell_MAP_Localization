@@ -111,8 +111,7 @@ def downsitekml(request):
 
 def exportkml(request):
     kmlsectors(request.GET['sectorclick'])
-    filepath = 'kml/static/fileserver/geomap.kml'
-    return serve(request,os.path.basename(filepath),os.path.dirname(filepath))
+    return HttpResponseRedirect('/kmlcreator/')
 
 def downkml(request):
     filepath='kml/static/fileserver/geomap.kml'
