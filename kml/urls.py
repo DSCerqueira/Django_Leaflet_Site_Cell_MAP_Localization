@@ -1,7 +1,7 @@
 from django.urls import path,include
 from .views import HomePageView,IndexPageView, KmlCreatorView, DataManView,exportview, exportsite, \
                 uploadsiteview,uploadsectorview,uploadtableview, UploadingView,runqueryview, cleartableview, showtablesview, \
-                exportkml,upfileview, colorview,colorviewsec, createkmlview, clearmapview
+                exportkml,upfileview, colorview,colorviewsec, createkmlview, clearmapview, downkml
 
 urlpatterns = [
                 path('kmlcreator/', KmlCreatorView.as_view(), name='kmlcreator'),
@@ -19,6 +19,7 @@ urlpatterns = [
                 path('cleartb/',cleartableview,name='cleartb'),
                 path('lsttb/',showtablesview,name='lsttb'),
                 path('exportkml/',exportkml,name='exportkml'),
+                path('downkml/',downkml,name='downkml'),
                 path('upfile/',upfileview,name='upfile'),
                 path('colorsite/',colorview,name='colorsite'),
                 path('colorsector/',colorviewsec,name='colorsector'),

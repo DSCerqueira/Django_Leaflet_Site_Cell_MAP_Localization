@@ -175,13 +175,21 @@
         <!-- Jeoson Maps -->
         {% include 'templateMAP.html' %}
 
-        <div class="container" style="padding-top: 30px; padding-left: 10px">
+        <div class="row" style="padding-top: 30px; padding-left: 10px">
               <form style="display: inline-block" action="{% url 'upfile' %}" method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
                   <button  id="uploadkml" class="btn btn-primary">Upload KML</button>
                   <input type="file"  name="file" style="display: inline-block" accept=".kml"/>
               </form>
-              <a href="{%url 'exportkml'%}">download kml</a>
+              <form style="padding-left: 10px;" method="GET" action="{% url 'exportkml' %}">
+                    <button id="downsector" type="submit" class="btn btn-primary" >download kml sectors</button>
+                    <input type="text" name="sectorclick" value="sectorclick" hidden>
+              </form>
+             <form style="padding-left: 10px;" method="GET" action="{% url 'exportkml' %}">
+                    <button id="downsite" type="submit" class="btn btn-primary" >download kml sites</button>
+                    <input type="text" name="sectorclick" value="siteclick" hidden>
+              </form>
+
         </div>
 
         <!-- Buttons rename Script -->
@@ -207,6 +215,9 @@
 
             const customkmlload=document.getElementById("exportsite")
             const customkmlloadsec=document.getElementById("exportsector")
+
+            const customSitedown=document.getElementById("downsite")
+            const customSectordown=document.getElementById("downsector")
 
             const customUPkml=document.getElementById("uploadkml")
 

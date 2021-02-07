@@ -456,11 +456,6 @@ def kmlsectors(elementtyp):
         pathfile = 'rename ' + fs.location + '/kml/static/fileserver/geomap.txt geomap.kml'
         pathfile = pathfile.replace('/', os.sep)
         os.system(pathfile)
-
-        fs = FileSystemStorage()
-        path = fs.location + "/kml/static/fileserver/geomap.kml"
-        pathgeo = fs.location + "/kml/static/fileserver"
-        kml2geojson.main.convert(path, pathgeo)
     except:
         elementtyp == 'site'
         pass

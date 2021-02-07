@@ -101,6 +101,7 @@ def showtablesview(request):
     if request.method=='GET':
         context={}
         listaresult=listables()
+        print(listaresult)
         context['listtable']=listaresult
         return render(request, 'kmlcreator.html', context)
 
@@ -109,8 +110,16 @@ def downsitekml(request):
     return serve(request,os.path.basename(filepath),os.path.dirname(filepath))
 
 def exportkml(request):
+    kmlsectors(request.GET['sectorclick'])
+    filepath = 'kml/static/fileserver/geomap.kml'
+    return serve(request,os.path.basename(filepath),os.path.dirname(filepath))
+
+def downkml(request):
     filepath='kml/static/fileserver/geomap.kml'
     return serve(request,os.path.basename(filepath),os.path.dirname(filepath))
+
+
+
 
 def upfileview(request):
     try:
@@ -145,9 +154,10 @@ def colorviewsec(request):
     return HttpResponseRedirect('/kmlcreator/')
 
 def createkmlview(request):
-    kmlsectors(request.GET['sectorclick'])
+    #kmlsectors(request.GET['sectorclick'])
     geojsonsectors(request.GET['sectorclick'])
     return HttpResponseRedirect('/kmlcreator/')
+
 
 def clearmapview(request):
     if request.method=='GET':
