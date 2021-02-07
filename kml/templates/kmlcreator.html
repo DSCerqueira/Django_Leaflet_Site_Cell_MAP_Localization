@@ -1,0 +1,284 @@
+{% extends "_layouts/base.html" %}
+
+{% block conteudo %}
+
+<div style="padding-left: 30px">
+    {% if user.is_authenticated %}
+        <p>Hello {{ user.username }}! <a href="{% url 'logout' %}">Log Out</a></p>
+
+        <!-- Pop Up loading -->
+        <div class="container">
+            <!-- Trigger the modal with a button -->
+            <button type="button" id="loadbtpop"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myload" hidden></button>
+            <div class="modal fade" id="myload" role="dialog" data-backdrop="static" data-keyboard="false">
+                {% include 'loadertb.html' %}
+            </div>
+        </div>
+
+        <div class="Container">
+            <div class="row" style="padding-top: 30px; padding-left: 10px">
+                <div class="col-md-6">
+                    <a href="{% url 'exportsec' %}" onclick="location.href='{% url 'exportsit' %}'" download>
+                        <button type="submit" class="btn btn-primary">Export Templates</button>
+                    </a>
+
+                    <button id="btsit1" class="btn btn-primary"> Import Sites</button>
+                    <form style="display: inline-block" action="{% url 'uploadsit' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file"  name="sites" id="sit"  style="display: none" />
+                        <button id="btsit2" class="btn btn-primary" hidden></button>
+                    </form>
+
+                    <button id="btsec1" class="btn btn-primary"> Import Sectors</button>
+                    <form style="display: inline-block" action="{% url 'uploadsec' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file"  name="sectors" id="sect"  style="display: none" />
+                        <button id="btsec2" class="btn btn-primary" hidden></button>
+                    </form>
+
+                    <button id="btgen" class="btn btn-primary">Import General Table</button>
+                    <!-- Pop Up insert table name -->
+                    <button type="button" id="targetpop" data-toggle="modal" data-target="#myModal" hidden></button>
+
+                    <form style="display: inline-block" action="{% url 'uploadtab' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input id="tbinpt" type="file"  name="gentb" style="display: none" />
+                        <button id="btgen2" class="btn btn-primary"  hidden></button>
+                        <!-- Pop Up insert table name -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times</button>
+                                      <h4 class="modal-title">Table Name</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" id="namepop"  name="tbname"/>
+                                      <p>Enter table name.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">
+                                          <a id="closepop">Close</a>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                    </form>
+
+                </div>
+                <div class="col">
+                    <form action="{% url 'lsttb' %}" method="GET">
+                        <button type="submit" class="btn btn-primary" style="margin-left: 10px">Show Table</button>
+                        <select style="display: inline-block" name="tablesql">
+                            <option value="table">Select table</option>
+                            {% for lista in listtable %}
+                                <option value="table">{{lista}}</option>
+                            {%endfor%}
+                        </select>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Query text -->
+        <div class="Container" style="padding-top: 30px; padding-left: 10px">
+                <div class="row">
+                    <form action="{% url 'runquery' %}" method="GET" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col">
+                            <p>
+                                <label for="query">
+                                    Type your query here:
+                                </label>
+                                <br/>
+                                <textarea rows="10"  cols="100" placeholder="Your consult should be written in SQL query." id="query" name="query" ></textarea>
+                            </p>
+                        </div>
+                        <button type="submit" id="queryload" hidden></button>
+                    </form>
+
+                    <div class="col"style="padding-top: 30px; padding-left: 10px">
+                        <button  id="btRunQuery"  class="btn btn-primary">Run query</button>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Output tabble -->
+        <div class="Container" style="padding-top: 30px; padding-left: 10px">
+            <div class="row" style="padding-left: 20px">
+                <p><b>Query output</b>.</p>
+                <form action="{% url 'cleartb' %}" method="GET">
+                    <div class="col" style="padding-left: 10px">
+                        <button type="submit" id="btclearout"  class="btn btn-primary">Clear output</button>
+                    </div>
+                </form>
+            </div>
+
+            <style>
+                  #box_tb {
+                    height: 400px;
+                    width: 1200px;
+                    overflow: auto;
+
+                  }
+            </style>
+            <div class="table-responsive" id="box_tb" style="padding-top: 30px;" >
+                <table class="table table-bordered" style="max-height:5px; width: 10 px">
+                    <tr>
+                        {%for field in fields %}
+                            <th>{{field}}</th>
+                        {%endfor%}
+                    </tr>
+                    {%for value in data%}
+                            <tr>
+                                {%for field_value in value%}
+                                    <td>{{field_value}}</td>
+                                {%endfor%}
+                            </tr>
+                    {%endfor%}
+
+                </table>
+            </div>
+        </div>
+
+        <!-- Buttons setting up/exports -->
+        <div class="container">
+            <div class="row" style="padding-top: 30px; padding-bottom: 30px;">
+                <form style="padding-left: 10px;">
+                    <button type="button" class="btn btn-primary">Export CSV</button>
+                </form>
+                <form style="padding-left: 10px;" method="GET" action="{% url 'colorsite' %}">
+                    <button type="submit" class="btn btn-primary">Set sites color</button>
+                    <input type="color" name="colorset" value="#ff0000">
+                </form>
+                <form style="padding-left: 10px;" method="GET" action="{% url 'colorsector' %}">
+                    <button type="submit" class="btn btn-primary">Set sectors color</button>
+                    <input type="color" name="colorsect" value="#ff0000">
+                </form>
+                <form style="padding-left: 10px;" method="GET" action="{% url 'kmlgenerator' %}">
+                    <button id="exportsite" type="submit" class="btn btn-primary" >Export KML sites</button>
+                    <input type="text" name="sectorclick" value="siteclick" hidden>
+                </form>
+                <form style="padding-left: 10px;" method="GET" action="{% url 'kmlgenerator' %}">
+                    <button id="exportsector" type="submit" class="btn btn-primary">Export KML sectors</button>
+                    <input type="text" name="sectorclick" value="sectorclick" hidden>
+                </form>
+                <form style="padding-left: 10px;" method="GET" action="{% url 'clearmap' %}" >
+                    <button type="submit" class="btn btn-primary">Clear Map</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Jeoson Maps -->
+        {% include 'templateMAP.html' %}
+
+        <div class="container" style="padding-top: 30px; padding-left: 10px">
+              <form style="display: inline-block" action="{% url 'upfile' %}" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <button  id="uploadkml" class="btn btn-primary">Upload KML</button>
+                  <input type="file"  name="file" style="display: inline-block" accept=".kml"/>
+              </form>
+              <a href="{%url 'exportkml'%}">download</a>
+        </div>
+
+        <!-- Buttons rename Script -->
+        <script type="text/javascript">
+            const realBtnS=document.getElementById("sit")
+            const customBtnS=document.getElementById("btsit1")
+            const customBtnS2=document.getElementById("btsit2")
+
+            const realBtn=document.getElementById("sect")
+            const customBtn=document.getElementById("btsec1")
+            const customBtn2=document.getElementById("btsec2")
+
+            const realBtnG=document.getElementById("tbinpt")
+            const customBtnG=document.getElementById("btgen")
+            const customBtnG2=document.getElementById("btgen2")
+            const customBtPop=document.getElementById("targetpop")
+            const customBtpoload=document.getElementById("loadbtpop")
+            const customBtclosepop=document.getElementById("closepop")
+
+            const customBtQueryload=document.getElementById("queryload")
+            const customBtQueryrun=document.getElementById("btRunQuery")
+            const customTextQuery=document.getElementById("query")
+
+            const customkmlload=document.getElementById("exportsite")
+            const customkmlloadsec=document.getElementById("exportsector")
+
+            const customUPkml=document.getElementById("uploadkml")
+
+
+            <!-- Site -->
+            customBtnS.addEventListener("click",function() {
+               realBtnS.click();
+              });
+            realBtnS.addEventListener("change", function(){
+               if (realBtnS.value){
+                   customBtpoload.click()}
+                 });
+            customBtpoload.addEventListener("click",function() {
+               if (realBtnS.value){
+                   customBtnS2.click();}
+                  });
+
+            <!-- Sector -->
+            customBtn.addEventListener("click",function() {
+                 realBtn.click();
+                });
+            realBtn.addEventListener("change", function(){
+                 if (realBtn.value){
+                    customBtpoload.click()};
+                 });
+            customBtpoload.addEventListener("click",function() {
+                 if (realBtn.value){
+                     customBtn2.click();}
+                 });
+
+            <!-- Geral -->
+            customBtnG.addEventListener("click",function() {
+                 realBtnG.click();
+                 });
+            realBtnG.addEventListener("change", function(){
+                 if (realBtnG.value){
+                     customBtPop.click()}
+                    });
+            customBtclosepop.addEventListener("click",function(){
+                 customBtpoload.click();
+                 });
+            customBtpoload.addEventListener("click",function(){
+                 if (realBtnG.value){
+                    customBtnG2.click();}
+                 });
+
+            <!-- Query -->
+            customBtQueryrun.addEventListener("click",function() {
+                 if (customTextQuery.value){
+                    customBtpoload.click();}
+                 });
+
+            customBtpoload.addEventListener("click",function() {
+                 if (customTextQuery.value){
+                    customBtQueryload.click();}
+                 });
+
+            <!-- export sites/sector kml -->
+            customkmlload.addEventListener("click",function() {
+                 customBtpoload.click();
+                 });
+            customkmlloadsec.addEventListener("click",function() {
+                 customBtpoload.click();
+                 });
+
+            customUPkml.addEventListener("click",function() {
+                 customBtpoload.click();
+                 });
+
+    </script>
+    {% else %}
+        <p>User don't logged. Prooceed to <a href="{% url 'login' %}">login </p>
+    {% endif %}
+</div>
+{% endblock %}

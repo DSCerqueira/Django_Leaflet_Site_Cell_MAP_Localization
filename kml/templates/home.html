@@ -1,0 +1,19 @@
+<!-- extend template base -->
+{% extends "_layouts/base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block conteudo %}
+
+<div style="padding-left: 30px">
+    {% if user.is_authenticated %}
+        Hello {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p><a href="{% url 'login' %}">Proceed to Login <a/> </p>
+        <p>User: Test Password: Test0102</p>
+
+    {% endif %}
+
+</div>
+{% endblock %}

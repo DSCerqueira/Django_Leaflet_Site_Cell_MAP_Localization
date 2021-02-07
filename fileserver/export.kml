@@ -1,0 +1,1697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" 
+xmlns:atom="http://www.w3.org/2005/Atom" >
+<Document>
+	<name>KML_File_Sectors</name>
+	<Style id="AR01">
+		<IconStyle>
+			<color>FF0000FF</color>
+			<scale>0.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Folder>
+		<name>AR01</name>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR01</name>
+			<Placemark>
+				<name>18NLANGR01</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.22241667,-23.03530556,525.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR01A</tr><td><tr><td>phycellid=339</tr><td><tr><td>rootsequenceidx=0</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.22241667,-23.03530556,525.0 -44.22104798923511,-23.03352186049987,516.2698076270631 -44.22022165976756,-23.03579218205298,516.2698076270631 -44.22241667,-23.03530556,525.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR01B</tr><td><tr><td>phycellid=340</tr><td><tr><td>rootsequenceidx=3</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.22241667,-23.03530556,525.0 -44.220272424350654,-23.0359816380563,516.2698076270631 -44.222123207437996,-23.03753462946228,516.2698076270631 -44.22241667,-23.03530556,525.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR01C</tr><td><tr><td>phycellid=341</tr><td><tr><td>rootsequenceidx=6</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.22241667,-23.03530556,525.0 -44.22456091564935,-23.034629481943703,516.2698076270631 -44.22271013256201,-23.033076490537724,516.2698076270631 -44.22241667,-23.03530556,525.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR01C</tr><td><tr><td>phycellid=341</tr><td><tr><td>rootsequenceidx=6</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.22241667,-23.03530556,525.0 -44.22456091564935,-23.034629481943703,516.2698076270631 -44.22271013256201,-23.033076490537724,516.2698076270631 -44.22241667,-23.03530556,525.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR02</name>
+			<Placemark>
+				<name>18NLANGR02</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.29580556,-23.02086111,295.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR02A</tr><td><tr><td>phycellid=333</tr><td><tr><td>rootsequenceidx=9</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.29580556,-23.02086111,295.0 -44.29390935962633,-23.019653097133403,286.2698076270631 -44.29390935962633,-23.022069122866593,286.2698076270631 -44.29580556,-23.02086111,295.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR02B</tr><td><tr><td>phycellid=334</tr><td><tr><td>rootsequenceidx=12</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.29580556,-23.02086111,295.0 -44.29402186049987,-23.022229790764893,286.2698076270631 -44.29629218205297,-23.023056120232436,286.2698076270631 -44.29580556,-23.02086111,295.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR02C</tr><td><tr><td>phycellid=335</tr><td><tr><td>rootsequenceidx=15</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.29580556,-23.02086111,295.0 -44.29732449217614,-23.01920348640363,286.2698076270631 -44.294945171302615,-23.018783947937866,286.2698076270631 -44.29580556,-23.02086111,295.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR02C</tr><td><tr><td>phycellid=335</tr><td><tr><td>rootsequenceidx=15</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.29580556,-23.02086111,295.0 -44.29732449217614,-23.01920348640363,277.51829701412237 -44.294945171302615,-23.018783947937866,277.51829701412237 -44.29580556,-23.02086111,295.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR03</name>
+			<Placemark>
+				<name>18NLANGR03</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.31830556,-23.00741667,46.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR03A</tr><td><tr><td>phycellid=186</tr><td><tr><td>rootsequenceidx=18</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.31830556,-23.00741667,44.0 -44.31693687923511,-23.00563297049987,26.518297014122396 -44.31611054976756,-23.00790329205298,26.518297014122396 -44.31830556,-23.00741667,44.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR03B</tr><td><tr><td>phycellid=187</tr><td><tr><td>rootsequenceidx=21</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.31830556,-23.00741667,46.0 -44.31709754713341,-23.009312870373666,37.26980762706307 -44.31951357286659,-23.009312870373666,37.26980762706307 -44.31830556,-23.00741667,46.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR03C</tr><td><tr><td>phycellid=188</tr><td><tr><td>rootsequenceidx=24</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.31830556,-23.00741667,44.0 -44.320299830017404,-23.006378518739037,35.26980762706307 -44.318207490356265,-23.005170505872442,35.26980762706307 -44.31830556,-23.00741667,44.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR04</name>
+			<Placemark>
+				<name>18NLANGR04</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.296028,-22.984528,68.5</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR04A</tr><td><tr><td>phycellid=165</tr><td><tr><td>rootsequenceidx=27</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.296028,-22.984528,68.5 -44.29723601286659,-22.982631799626336,59.76980762706307 -44.29481998713341,-22.982631799626336,59.76980762706307 -44.296028,-22.984528,68.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR04A</tr><td><tr><td>phycellid=165</tr><td><tr><td>rootsequenceidx=27</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.296028,-22.984528,68.5 -44.29723601286659,-22.982631799626336,59.76980762706307 -44.29481998713341,-22.982631799626336,59.76980762706307 -44.296028,-22.984528,68.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR04A</tr><td><tr><td>phycellid=165</tr><td><tr><td>rootsequenceidx=27</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.296028,-22.984528,68.5 -44.29723601286659,-22.982631799626336,59.76980762706307 -44.29481998713341,-22.982631799626336,59.76980762706307 -44.296028,-22.984528,68.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR04B</tr><td><tr><td>phycellid=166</tr><td><tr><td>rootsequenceidx=30</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.296028,-22.984528,68.5 -44.297685623596365,-22.98604693217614,59.76980762706307 -44.298105162062136,-22.983667611302618,59.76980762706307 -44.296028,-22.984528,68.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR04B</tr><td><tr><td>phycellid=166</tr><td><tr><td>rootsequenceidx=30</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.296028,-22.984528,68.5 -44.297685623596365,-22.98604693217614,59.76980762706307 -44.298105162062136,-22.983667611302618,59.76980762706307 -44.296028,-22.984528,68.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR05</name>
+			<Placemark>
+				<name>18NLANGR05</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.32458333,-22.95658333,205.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR05A</tr><td><tr><td>phycellid=204</tr><td><tr><td>rootsequenceidx=33</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.32458333,-22.95658333,205.0 -44.32268712962634,-22.955375317133406,196.26980762706307 -44.32268712962634,-22.957791342866596,196.26980762706307 -44.32458333,-22.95658333,205.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR05A</tr><td><tr><td>phycellid=204</tr><td><tr><td>rootsequenceidx=33</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.32458333,-22.95658333,205.0 -44.32268712962634,-22.955375317133406,196.26980762706307 -44.32268712962634,-22.957791342866596,196.26980762706307 -44.32458333,-22.95658333,205.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR05A</tr><td><tr><td>phycellid=204</tr><td><tr><td>rootsequenceidx=33</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.32458333,-22.95658333,205.0 -44.32268712962634,-22.955375317133406,196.26980762706307 -44.32268712962634,-22.957791342866596,196.26980762706307 -44.32458333,-22.95658333,205.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR05B</tr><td><tr><td>phycellid=205</tr><td><tr><td>rootsequenceidx=36</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.32458333,-22.95658333,205.0 -44.32562148126097,-22.958577600017403,178.72394118358088 -44.32682949412756,-22.956485260356263,178.72394118358088 -44.32458333,-22.95658333,205.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR05C</tr><td><tr><td>phycellid=206</tr><td><tr><td>rootsequenceidx=39</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.32458333,-22.95658333,205.0 -44.32610226217614,-22.954925706403632,196.26980762706307 -44.32372294130262,-22.95450616793787,196.26980762706307 -44.32458333,-22.95658333,205.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR06</name>
+			<Placemark>
+				<name>18NLANGR06</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.39161111,-22.94363889,48.5</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR06A</tr><td><tr><td>phycellid=291</tr><td><tr><td>rootsequenceidx=45</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.39161111,-22.94363889,48.5 -44.391317647437994,-22.94140982053772,39.76980762706307 -44.38946686435065,-22.9429628119437,39.76980762706307 -44.39161111,-22.94363889,48.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR06B</tr><td><tr><td>phycellid=292</tr><td><tr><td>rootsequenceidx=48</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.39161111,-22.94363889,48.5 -44.391513040356266,-22.945885054127558,39.76980762706307 -44.393605380017405,-22.944677041260963,39.76980762706307 -44.39161111,-22.94363889,48.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR06C</tr><td><tr><td>phycellid=293</tr><td><tr><td>rootsequenceidx=51</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.39161111,-22.94363889,48.5 -44.393605380017405,-22.942600738739035,39.76980762706307 -44.391513040356266,-22.94139272587244,39.76980762706307 -44.39161111,-22.94363889,48.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR07</name>
+			<Placemark>
+				<name>18NLANGR07</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.440472,-22.959556,90.5</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR07A</tr><td><tr><td>phycellid=207</tr><td><tr><td>rootsequenceidx=54</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.440472,-22.959556,90.5 -44.43910331923511,-22.95777230049987,81.76980762706307 -44.43827698976756,-22.960042622052978,81.76980762706307 -44.440472,-22.959556,90.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR07B</tr><td><tr><td>phycellid=208</tr><td><tr><td>rootsequenceidx=57</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.440472,-22.959556,90.5 -44.439985377947025,-22.961751010232437,81.76980762706307 -44.44225569950013,-22.960924680764894,81.76980762706307 -44.440472,-22.959556,90.5
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR08</name>
+			<Placemark>
+				<name>18NLANGR08</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.44880556,-23.00486111,306.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR08A</tr><td><tr><td>phycellid=6</tr><td><tr><td>rootsequenceidx=60</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.44880556,-23.00486111,306.0 -44.44890362964373,-23.00261494587244,279.7239411835809 -44.44681128998259,-23.003822958739036,279.7239411835809 -44.44880556,-23.00486111,306.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR08B</tr><td><tr><td>phycellid=7</tr><td><tr><td>rootsequenceidx=63</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.44880556,-23.00486111,306.0 -44.45017424076489,-23.00664480950013,288.51829701412237 -44.45100057023244,-23.004374487947022,288.51829701412237 -44.44880556,-23.00486111,306.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR08B</tr><td><tr><td>phycellid=7</tr><td><tr><td>rootsequenceidx=63</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.44880556,-23.00486111,306.0 -44.45017424076489,-23.00664480950013,288.51829701412237 -44.45100057023244,-23.004374487947022,288.51829701412237 -44.44880556,-23.00486111,306.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR10</name>
+			<Placemark>
+				<name>18NLANGR10</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.541000000000004,-23.02630556,99.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR10A</tr><td><tr><td>phycellid=201</tr><td><tr><td>rootsequenceidx=66</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.541000000000004,-23.02630556,99.0 -44.54186038869739,-23.02422839793787,90.26980762706307 -44.539481067823864,-23.024647936403632,90.26980762706307 -44.541000000000004,-23.02630556,99.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR10A</tr><td><tr><td>phycellid=201</tr><td><tr><td>rootsequenceidx=66</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.541000000000004,-23.02630556,99.0 -44.54186038869739,-23.02422839793787,90.26980762706307 -44.539481067823864,-23.024647936403632,90.26980762706307 -44.541000000000004,-23.02630556,99.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR10A</tr><td><tr><td>phycellid=201</tr><td><tr><td>rootsequenceidx=66</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.541000000000004,-23.02630556,99.0 -44.54186038869739,-23.02422839793787,90.26980762706307 -44.539481067823864,-23.024647936403632,90.26980762706307 -44.541000000000004,-23.02630556,99.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR10B</tr><td><tr><td>phycellid=202</tr><td><tr><td>rootsequenceidx=69</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.541000000000004,-23.02630556,99.0 -44.53934237640364,-23.02478662782386,90.26980762706307 -44.53892283793787,-23.027165948697384,90.26980762706307 -44.541000000000004,-23.02630556,99.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR10C</tr><td><tr><td>phycellid=203</tr><td><tr><td>rootsequenceidx=72</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.541000000000004,-23.02630556,99.0 -44.54203815126097,-23.028299830017403,90.26980762706307 -44.54324616412756,-23.026207490356263,90.26980762706307 -44.541000000000004,-23.02630556,99.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR11</name>
+			<Placemark>
+				<name>18NLANGR11</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.24133333,-22.99222222,48.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR11A</tr><td><tr><td>phycellid=336</tr><td><tr><td>rootsequenceidx=75</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.24133333,-22.99222222,48.0 -44.2406572519437,-22.99007797435065,39.26980762706307 -44.23910426053773,-22.991928757437993,39.26980762706307 -44.24133333,-22.99222222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR11A</tr><td><tr><td>phycellid=336</tr><td><tr><td>rootsequenceidx=75</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.24133333,-22.99222222,48.0 -44.2406572519437,-22.99007797435065,39.26980762706307 -44.23910426053773,-22.991928757437993,39.26980762706307 -44.24133333,-22.99222222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR11B</tr><td><tr><td>phycellid=337</tr><td><tr><td>rootsequenceidx=78</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.24133333,-22.99222222,48.0 -44.23954963049987,-22.993590900764893,39.26980762706307 -44.24181995205298,-22.994417230232436,39.26980762706307 -44.24133333,-22.99222222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR11B</tr><td><tr><td>phycellid=337</tr><td><tr><td>rootsequenceidx=78</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.24133333,-22.99222222,48.0 -44.23954963049987,-22.993590900764893,39.26980762706307 -44.24181995205298,-22.994417230232436,39.26980762706307 -44.24133333,-22.99222222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR11C</tr><td><tr><td>phycellid=338</tr><td><tr><td>rootsequenceidx=81</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.24133333,-22.99222222,48.0 -44.24299095359637,-22.99374115217614,39.26980762706307 -44.24341049206214,-22.991361831302616,39.26980762706307 -44.24133333,-22.99222222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR11C</tr><td><tr><td>phycellid=338</tr><td><tr><td>rootsequenceidx=81</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.24133333,-22.99222222,48.0 -44.24299095359637,-22.99374115217614,39.26980762706307 -44.24341049206214,-22.991361831302616,39.26980762706307 -44.24133333,-22.99222222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR12</name>
+			<Placemark>
+				<name>18NLANGR12</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.16763889,-23.14522222,48.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR12A</tr><td><tr><td>phycellid=108</tr><td><tr><td>rootsequenceidx=84</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.16763889,-23.14522222,48.0 -44.166600738739035,-23.1432279499826,21.723941183580887 -44.165392725872444,-23.145320289643738,21.723941183580887 -44.16763889,-23.14522222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR12B</tr><td><tr><td>phycellid=109</tr><td><tr><td>rootsequenceidx=87</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.16763889,-23.14522222,48.0 -44.1683149680563,-23.14736646564935,48.0 -44.16986795946227,-23.145515682562007,48.0 -44.16763889,-23.14522222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR12C</tr><td><tr><td>phycellid=110</tr><td><tr><td>rootsequenceidx=90</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.16763889,-23.14522222,48.0 -44.169633160017405,-23.144184068739037,21.723941183580887 -44.167540820356265,-23.14297605587244,21.723941183580887 -44.16763889,-23.14522222,48.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR14</name>
+			<Placemark>
+				<name>18NLANGR14</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.35277778,-23.00777778,46.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR14A</tr><td><tr><td>phycellid=9</tr><td><tr><td>rootsequenceidx=93</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.35277778,-23.00777778,46.0 -44.35267971035626,-23.01002394412756,37.26980762706307 -44.3547720500174,-23.008815931260965,37.26980762706307 -44.35277778,-23.00777778,46.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLANGR15</name>
+			<Placemark>
+				<name>18NLANGR15</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-44.30647222,-22.99788889,44.7</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR15A</tr><td><tr><td>phycellid=330</tr><td><tr><td>rootsequenceidx=96</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.30647222,-22.99788889,44.7 -44.307332608697386,-22.995811727937866,35.96980762706307 -44.304953287823864,-22.99623126640363,35.96980762706307 -44.30647222,-22.99788889,44.7
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR15B</tr><td><tr><td>phycellid=331</tr><td><tr><td>rootsequenceidx=99</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.30647222,-22.99788889,44.7 -44.30424315053773,-22.998182352562004,35.96980762706307 -44.3057961419437,-23.000033135649346,35.96980762706307 -44.30647222,-22.99788889,44.7
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLANGR15C</tr><td><tr><td>phycellid=332</tr><td><tr><td>rootsequenceidx=102</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-44.30647222,-22.99788889,44.7 -44.30676568256201,-23.000117959462276,35.96980762706307 -44.30861646564935,-22.998564968056296,35.96980762706307 -44.30647222,-22.99788889,44.7
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLAPER01</name>
+			<Placemark>
+				<name>18NLAPER01</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-42.10527778,-21.62616667,126.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLAPER01A</tr><td><tr><td>phycellid=459</tr><td><tr><td>rootsequenceidx=759</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-42.10527778,-21.62616667,126.0 -42.104984317437996,-21.623937600537722,117.26980762706307 -42.103133534350654,-21.625490591943702,117.26980762706307 -42.10527778,-21.62616667,126.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLAPER01B</tr><td><tr><td>phycellid=460</tr><td><tr><td>rootsequenceidx=734</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-42.10527778,-21.62616667,126.0 -42.10338157962634,-21.627374682866595,117.26980762706307 -42.10557124256201,-21.628395739462277,117.26980762706307 -42.10527778,-21.62616667,126.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLAPER01C</tr><td><tr><td>phycellid=461</tr><td><tr><td>rootsequenceidx=405</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-42.10527778,-21.62616667,126.0 -42.10752394412756,-21.626264739643737,117.26980762706307 -42.106315931260966,-21.624172399982598,117.26980762706307 -42.10527778,-21.62616667,126.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLARBZ02</name>
+			<Placemark>
+				<name>18NLARBZ02</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-41.88763889,-22.75625,26.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ02A</tr><td><tr><td>phycellid=429</tr><td><tr><td>rootsequenceidx=120</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.88763889,-22.75625,26.0 -41.886600738739034,-22.7542557299826,26.0 -41.88539272587244,-22.75634806964374,26.0 -41.88763889,-22.75625,26.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ02B</tr><td><tr><td>phycellid=430</tr><td><tr><td>rootsequenceidx=123</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.88763889,-22.75625,26.0 -41.88715226794702,-22.75844501023244,26.0 -41.88942258950013,-22.757618680764896,26.0 -41.88763889,-22.75625,26.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ02C</tr><td><tr><td>phycellid=431</tr><td><tr><td>rootsequenceidx=126</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.88763889,-22.75625,26.0 -41.889885054127554,-22.75634806964374,26.0 -41.88867704126096,-22.7542557299826,26.0 -41.88763889,-22.75625,26.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLARBZ03</name>
+			<Placemark>
+				<name>18NLARBZ03</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-41.90191667,-22.76925,70.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ03A</tr><td><tr><td>phycellid=456</tr><td><tr><td>rootsequenceidx=129</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.90191667,-22.76925,67.0 -41.90025904640363,-22.76773106782386,58.26980762706307 -41.89983950793786,-22.770110388697383,58.26980762706307 -41.90191667,-22.76925,67.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ03B</tr><td><tr><td>phycellid=457</tr><td><tr><td>rootsequenceidx=132</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.90191667,-22.76925,70.0 -41.903574293596364,-22.77076893217614,61.26980762706307 -41.903993832062135,-22.768389611302617,61.26980762706307 -41.90191667,-22.76925,70.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLARBZ04</name>
+			<Placemark>
+				<name>18NLARBZ04</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-41.96608333,-22.74505556,41.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ04A</tr><td><tr><td>phycellid=462</tr><td><tr><td>rootsequenceidx=135</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.96608333,-22.74505556,41.0 -41.96383716587244,-22.744957490356263,32.26980762706307 -41.96504517873903,-22.747049830017403,32.26980762706307 -41.96608333,-22.74505556,41.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ04B</tr><td><tr><td>phycellid=463</tr><td><tr><td>rootsequenceidx=138</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.96608333,-22.74505556,41.0 -41.96712148126096,-22.747049830017403,32.26980762706307 -41.96832949412755,-22.744957490356263,32.26980762706307 -41.96608333,-22.74505556,41.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLARBZ05</name>
+			<Placemark>
+				<name>18NLARBZ05</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-41.89583333,-22.76786111,61.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ05A</tr><td><tr><td>phycellid=453</tr><td><tr><td>rootsequenceidx=144</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.89583333,-22.76786111,61.0 -41.896693718697385,-22.765783947937866,43.518297014122396 -41.89431439782386,-22.76620348640363,43.518297014122396 -41.89583333,-22.76786111,61.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ05B</tr><td><tr><td>phycellid=454</tr><td><tr><td>rootsequenceidx=147</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.89583333,-22.76786111,61.0 -41.89363831976756,-22.76737448794702,43.518297014122396 -41.89446464923511,-22.76964480950013,43.518297014122396 -41.89583333,-22.76786111,61.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ05C</tr><td><tr><td>phycellid=455</tr><td><tr><td>rootsequenceidx=150</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.89583333,-22.76786111,61.0 -41.896871481260966,-22.7698553800174,43.518297014122396 -41.89807949412756,-22.76776304035626,43.518297014122396 -41.89583333,-22.76786111,61.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+		<Style id="corsite">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>0.5</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/shaded_dot.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Folder>
+			<name>18NLARBZ06</name>
+			<Placemark>
+				<name>18NLARBZ06</name>
+					<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>PAR01=nan</tr><td><tr><td>PAR02=nan</tr><td><tr><td>PAR03=nan</tr><td><tr><td>PAR04=nan</tr><td><tr><td>PAR05=nan</tr><td>]]></description>
+				<styleUrl>#corsite</styleUrl>
+				<Point>
+					<extrude>1</extrude>
+					<altitudeMode>absolute</altitudeMode>
+					<coordinates>-41.91519444,-22.77430556,25.0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ06A</tr><td><tr><td>phycellid=441</tr><td><tr><td>rootsequenceidx=153</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.91519444,-22.77430556,25.0 -41.91382575923511,-22.772521860499868,7.518297014122396 -41.91299942976756,-22.774792182052977,7.518297014122396 -41.91519444,-22.77430556,25.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ06B</tr><td><tr><td>phycellid=442</tr><td><tr><td>rootsequenceidx=156</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.91519444,-22.77430556,25.0 -41.91341074049987,-22.775674240764893,7.518297014122396 -41.915681062052975,-22.776500570232436,7.518297014122396 -41.91519444,-22.77430556,25.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+			<Placemark>
+				<description><![CDATA[<table border="1" padding="0"></tr><td><tr><td>SETOR = 18NLARBZ06C</tr><td><tr><td>phycellid=443</tr><td><tr><td>rootsequenceidx=159</tr><td>]]></description>
+			<Style id="corset">
+				<PolyStyle>
+					<color>28FFFFFF</color>
+				</PolyStyle>
+			</Style>
+				<Polygon>
+					<altitudeMode>absolute</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								-41.91519444,-22.77430556,25.0 -41.916852063596366,-22.775824492176138,25.0 -41.91727160206214,-22.773445171302615,25.0 -41.91519444,-22.77430556,25.0
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+					<heading>90</heading><tilt>10</tilt>
+				</Polygon>
+				<StyleUrl>#corset</StyleUrl>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>

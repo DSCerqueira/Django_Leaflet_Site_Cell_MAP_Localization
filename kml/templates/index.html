@@ -1,0 +1,32 @@
+<!-- extend template base -->
+{% extends "_layouts/base.html" %}
+
+{% block conteudo %}
+<div style="padding-left: 30px">
+    {% if user.is_authenticated %}
+        Hello {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+
+        <div class="container">
+            <div class="row" style="padding-top: 30px">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a class="btn btn-primary btn-lg btn-block" href="{% url 'kmlcreator' %}" >Creating KML FIles</a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a class="btn btn-primary btn-lg btn-block" href="{% url 'loading' %}">Database Managment</a>
+                </div>
+            </div>
+            <div class="container" style="padding-top: 30px">
+                <p style="text-align: center;"> Python Kid, from Candeias to the World. </p>
+        </div>
+</div>
+    {% else %}
+        <p>User don't logged. Prooceed to <a href="{% url 'login' %}">login<a/> </p>
+        <p>User: Test Password: Test0102</p>
+
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

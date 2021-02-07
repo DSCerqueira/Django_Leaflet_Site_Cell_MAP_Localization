@@ -1,0 +1,1 @@
+Django website for map sites data visualization

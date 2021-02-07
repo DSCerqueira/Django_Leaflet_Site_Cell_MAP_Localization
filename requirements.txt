@@ -1,0 +1,14 @@
+asgiref==3.3.1
+check-requirements-txt==1.0.2
+dj-database-url==0.5.0
+Django==3.1.4
+django-heroku==0.3.1
+gunicorn==20.0.4
+psycopg2==2.8.6
+pytz==2020.4
+sqlparse==0.4.1
+stdlib-list==0.8.0
+whitenoise==5.2.0
+requests
+pandas==1.1.5
+kml2geojson==4.0.2
