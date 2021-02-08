@@ -125,13 +125,27 @@ def upfileview(request):
         if request.method == 'POST' and request.FILES['file']:
             fs=FileSystemStorage()
             path = fs.location + "/kml/static/fileserver/geomap.kml"
+
             try:
                 os.remove(path)
             except:
                 pass
             fs.save(path, request.FILES['file'])
             pathgeo=fs.location + "/kml/static/fileserver"
-            kml2geojson.main.convert(path, pathgeo)
+
+            try:
+                kml2geojson.main.convert(path, pathgeo)
+            except :
+                try:
+                    pathfile = 'del ' + fs.location + '/kml/static/fileserver/geomap.geojson'
+                    pathfile = pathfile.replace('/', os.sep)
+                    os.system(pathfile)
+                except:
+                    pass
+                pathfile = 'rename ' + fs.location + '/kml/static/fileserver/geomap.kml geomap.geojson'
+                pathfile = pathfile.replace('/', os.sep)
+                os.system(pathfile)
+
             return HttpResponseRedirect('/kmlcreator/')
         else:
             return HttpResponseRedirect('/kmlcreator/')
