@@ -8,8 +8,13 @@ from django.core.files.storage import FileSystemStorage
 pathl = sys.path
 
 def upload_sites(table):
+    spatialite_path = 'mod_spatialite-5.0.1-win-amd64/mod_spatialite-5.0.1-win-amd64'
+    os.environ['PATH'] = spatialite_path + ';' + os.environ['PATH']
     con = sqlite3.connect('dbtables.sqlite3')
+    con.enable_load_extension(True)
+    con.load_extension("mod_spatialite")
     cur = con.cursor()
+
     try:
         cur.execute('DROP TABLE sites')
     except:
@@ -22,10 +27,13 @@ def upload_sites(table):
         strqueryend = strqueryend + i + ','
         strquery = strquery + i + ','
 
-    strqueryend = strqueryend + 'SELECTOR,COLOR)'
-    strquery = strquery + 'SELECTOR,COLOR)'
+    strqueryend = strqueryend + 'SELECTOR,color)'
+    strquery = strquery + 'SELECTOR,color)'
     sqlqueryend = 'CREATE TABLE sites ' + strqueryend
     cur.execute(sqlqueryend)
+    query = "ALTER TABLE sites ADD geometry;"
+    cur.execute(query)
+
     row = 0
     sqlcoluna = ''
     dima = dataframe.shape
@@ -49,22 +57,33 @@ def upload_sites(table):
     sqlquery = 'INSERT INTO sites ' + strquery + ' VALUES' + sqlcoluna
     cur.execute(sqlquery)
     con.commit()
-    try:
-        cur.execute('DROP TABLE sitestemp')
-        sqlquery = 'CREATE TABLE sitestemp AS SELECT * FROM sites;'
-        cur.execute(sqlquery)
-    except:
-        sqlquery = 'CREATE TABLE sitestemp AS SELECT * FROM sites;'
-        cur.execute(sqlquery)
+
+    #############creating geometry data####################
+    insertgeometry('site')
 
 def upload_sectors(table):
     con = sqlite3.connect('dbtables.sqlite3')
+
     cur = con.cursor()
+
+    try:
+        spatialite_path ='mod_spatialite-5.0.1-win-amd64/mod_spatialite-5.0.1-win-amd64'
+        os.environ['PATH'] = spatialite_path + ';' + os.environ['PATH']
+
+        os.system("set SPATIALITE_SECURITY=relaxed")
+
+        con.enable_load_extension(True)
+        con.load_extension("mod_spatialite")
+
+    except sqlite3.Error as error:
+        print(error)
     try:
         cur.execute('DROP TABLE sectors')
-    except:
-        pass
 
+    except sqlite3.Error as err:
+        print(str(err))
+
+    con.commit()
     dataframe = pd.read_csv(table)
     strqueryend = '(SECID INTEGER PRIMARY KEY AUTOINCREMENT,'
     strquery = '('
@@ -72,15 +91,19 @@ def upload_sectors(table):
         strqueryend = strqueryend + i + ','
         strquery = strquery + i + ','
 
-    strqueryend = strqueryend + 'SELECTOR,COLOR)'
-    strquery = strquery + 'SELECTOR,COLOR)'
+    strqueryend = strqueryend + 'SELECTOR,color)'
+    strquery = strquery + 'SELECTOR,color)'
     sqlqueryend = 'CREATE TABLE sectors ' + strqueryend
     cur.execute(sqlqueryend)
+    query = "ALTER TABLE sectors ADD geometry;"
+    cur.execute(query)
+
+
     row = 0
     sqlcoluna = ''
     dima = dataframe.shape
 
-    #collecting data
+    # collecting data
     for i in range(dima[0]):
         col = 0
         sqlrow = '('
@@ -95,17 +118,15 @@ def upload_sectors(table):
         if i == int(dima[0] - 1):
             sqlcoluna = sqlcoluna + sqlrow + ';'
 
+
+
     #####insertin data into the table sites######
     sqlquery = 'INSERT INTO sectors ' + strquery + ' VALUES' + sqlcoluna
     cur.execute(sqlquery)
     con.commit()
-    try:
-        cur.execute('DROP TABLE sectorstemp')
-        sqlquery = 'CREATE TABLE sectorstemp AS SELECT * FROM sectors;'
-        cur.execute(sqlquery)
-    except:
-        sqlquery = 'CREATE TABLE sectorstemp AS SELECT * FROM sectors;'
-        cur.execute(sqlquery)
+
+    ###################inserting geometry data##############
+    insertgeometry('sector')
 
 def upload_table(table,name):
 
@@ -161,6 +182,88 @@ def upload_table(table,name):
         erroname = 'Connection failed. Erro type: ' + str(err)
         return(erroname)
 
+def insertgeometry(elementtyp):
+    fs = FileSystemStorage()
+    spatialite_path = 'mod_spatialite-5.0.1-win-amd64/mod_spatialite-5.0.1-win-amd64'
+    os.environ['PATH'] = spatialite_path + ';' + os.environ['PATH']
+    con = sqlite3.connect('dbtables.sqlite3')
+    con.enable_load_extension(True)
+    con.load_extension('mod_spatialite') #laoding geometry column creation
+    cur = con.cursor()
+
+    ########################creating folder agregation-sites#############################
+    if elementtyp == 'site':
+        try:
+            sqlquery = 'SELECT * FROM sites'
+            cur.execute(sqlquery)
+            tablesites = pd.DataFrame(cur.fetchall())
+            tablesites.sort_values(by=[1, 2], inplace=True)
+            aux = list(cur.description)
+            fields = []
+            for i in aux:
+                fields.append(i[0])
+
+            for i in range(tablesites.shape[0]):
+                selected = tablesites[tablesites.shape[1] - 3][i]
+                site = tablesites[2][i]
+                lat = round(float(tablesites[3][i]), 8)
+                long = round(float(tablesites[4][i]), 8)
+                ###############starting site description##################
+                # estou aqyi
+                query = "UPDATE sites SET geometry= (GeomFromText('POINT(" + str(long) + " " + str(
+                    lat) + ")',4326)) WHERE site= '" + str(site) + "'"
+                cur.execute(query)
+
+            con.commit()
+        except:
+            pass
+
+    ###################starting sector creation##################################
+
+    if elementtyp == 'sector':
+        counter = 0
+        terminator = 0
+        try:
+            sqlquery = 'SELECT * FROM sectors'
+            cur.execute(sqlquery)
+            tablesectors = pd.DataFrame(cur.fetchall())
+            tablesectors.sort_values(by=[1, 3, 4], inplace=True)
+            aux = list(cur.description)
+            fieldsect = []
+
+            for i in aux:
+                fieldsect.append(i[0])
+
+            for isc in range(tablesectors.shape[0]):
+                    lat = round(float(tablesectors[11][isc]), 8)
+                    long = round(float(tablesectors[12][isc]), 8)
+                    sector = tablesectors[4][isc]
+                    azimuth = float(tablesectors[6][isc] * 1)
+                    bandhor = float(tablesectors[9][isc] * 1)
+
+                    latp1 = lat + (250 * (180 / mt.pi) * mt.cos(
+                            (azimuth - bandhor / 2) * mt.pi / 180)) / 6371000
+                    lonp1 = long + (250 * (180 / mt.pi) * mt.sin(
+                            (azimuth - bandhor / 2) * mt.pi / 180)) / 6371000
+
+                    latp2 = lat + (250 * (180 / mt.pi) * mt.cos(
+                            (azimuth + bandhor / 2) * mt.pi / 180)) / 6371000
+                    lonp2 = long + (250 * (180 / mt.pi) * mt.sin(
+                            (azimuth + bandhor / 2) * mt.pi / 180)) / 6371000
+
+                    query = "UPDATE sectors SET geometry= "
+                    query = query + "(GeomFromText('POLYGON((" + str(long) + " " + str(lat) + "," + str(
+                        lonp1) + " " + str(latp1) + "," + str(lonp2) + " " + str(latp2) + "," + str(
+                        long) + " " + str(lat) + "))',4326))"
+                    query = query + " WHERE sector='" + sector + "'"
+                    cur.execute(query)
+
+            con.commit()
+
+        except:
+            pass
+
+
 def runqdtb(query):
     query=query
     con = sqlite3.connect('dbtables.sqlite3')
@@ -212,7 +315,7 @@ def colorsetting(color):
         for i in lista:
             setcolor = setcolor + "'" +str(i[0]) + "',"
         setcolor = setcolor + '"")'
-        query = "UPDATE sites SET COLOR='" + color + "' WHERE SITE IN " + setcolor;
+        query = "UPDATE sites SET color='" + color + "' WHERE SITE IN " + setcolor;
         cur.execute(query)
         con.commit()
         return
@@ -230,7 +333,7 @@ def colorsettingsec(color):
         for i in lista:
             setcolor = setcolor + "'" +str(i[0]) + "',"
         setcolor = setcolor + '"")'
-        query = "UPDATE sectors SET COLOR='" + color + "' WHERE sector IN " + setcolor;
+        query = "UPDATE sectors SET color='" + color + "' WHERE sector IN " + setcolor;
         cur.execute(query)
         con.commit()
         return
@@ -243,7 +346,7 @@ def kmlsectors(elementtyp):
     cur = con.cursor()
     limiter = 0
     try:
-        sqlquery = 'SELECT * FROM sites'
+        sqlquery = 'SELECT * FROM sitetemp'
         cur.execute(sqlquery)
         tablesites = pd.DataFrame(cur.fetchall())
         tablesites.sort_values(by=[1, 2], inplace=True)
@@ -253,7 +356,7 @@ def kmlsectors(elementtyp):
             fields.append(i[0])
 
         try:
-            sqlquery = 'SELECT * FROM sectors'
+            sqlquery = 'SELECT * FROM sectortemp'
             cur.execute(sqlquery)
             tablesectors = pd.DataFrame(cur.fetchall())
             tablesectors.sort_values(by=[1, 3, 4], inplace=True)
@@ -308,13 +411,13 @@ def kmlsectors(elementtyp):
 
                 if tablesites[1][i] == agregation[n]:
 
-                    auxcolor = tablesites[tablesites.shape[1] - 1][i]
+                    auxcolor = tablesites[tablesites.shape[1] - 2][i]
                     if auxcolor != '':
                         color = 'FF' + auxcolor[5] + auxcolor[6] + auxcolor[3] + auxcolor[4] + auxcolor[1] + \
                                 auxcolor[2]
                     elif auxcolor == '':
                         color = 'ffffffff'
-                    selected = tablesites[tablesites.shape[1] - 2][i]
+                    selected = tablesites[tablesites.shape[1] - 3][i]
                     site = tablesites[2][i]
                     lat = float(tablesites[3][i])
                     long = float(tablesites[4][i])
@@ -376,13 +479,13 @@ def kmlsectors(elementtyp):
                             if site == tablesectors[3][isc]:
                                 counter = terminator
                                 limiter = limiter + 1
-                                auxcolorsec = tablesectors[tablesectors.shape[1] - 1][isc]
+                                auxcolorsec = tablesectors[tablesectors.shape[1] - 2][isc]
                                 if auxcolorsec != '':
                                     colorsec = "80" + auxcolorsec[5] + auxcolorsec[6] + auxcolorsec[3] + \
                                                auxcolorsec[4] + auxcolorsec[1] + auxcolorsec[2]
                                 elif auxcolorsec == '':
                                     colorsec = '28FFFFFF'
-                                selectedsec = tablesectors[tablesectors.shape[1] - 2][isc]
+                                selectedsec = tablesectors[tablesectors.shape[1] - 3][isc]
                                 sector = tablesectors[4][isc]
                                 height = float(tablesectors[5][isc] * 1) + float(
                                     tablesectors[13][isc] * 1)
@@ -467,7 +570,7 @@ def geojsonsectors(elementtyp):
     cur = con.cursor()
     limiter = 0
     try:
-        sqlquery = 'SELECT * FROM sites'
+        sqlquery = 'SELECT * FROM sitetemp'
         cur.execute(sqlquery)
         tablesites = pd.DataFrame(cur.fetchall())
         tablesites.sort_values(by=[1, 2], inplace=True)
@@ -477,7 +580,7 @@ def geojsonsectors(elementtyp):
             fields.append(i[0])
 
         try:
-            sqlquery = 'SELECT * FROM sectors'
+            sqlquery = 'SELECT * FROM sectortemp'
             cur.execute(sqlquery)
             tablesectors = pd.DataFrame(cur.fetchall())
             tablesectors.sort_values(by=[1, 3, 4], inplace=True)
@@ -501,11 +604,11 @@ def geojsonsectors(elementtyp):
         ########################creating folder agregation-sites#############################
         for i in range(tablesites.shape[0]):
 
-            colorsite = tablesites[tablesites.shape[1] - 1][i]
+            colorsite = tablesites[tablesites.shape[1] - 2][i]
             if colorsite == '':
                 colorsite = '#eaebec'
 
-            selected = tablesites[tablesites.shape[1] - 2][i]
+            selected = tablesites[tablesites.shape[1] - 3][i]
             site = tablesites[2][i]
             lat = round(float(tablesites[3][i]), 8)
             long = round(float(tablesites[4][i]), 8)
@@ -538,10 +641,10 @@ def geojsonsectors(elementtyp):
                         kmltext.writelines('{\n"type": "Feature",\n')
 
 
-                        colorsec = tablesectors[tablesectors.shape[1] - 1][isc]
+                        colorsec = tablesectors[tablesectors.shape[1] - 2][isc]
                         if colorsec == '':
                             colorsec = '#55ffff'
-                        selectedsec = tablesectors[tablesectors.shape[1] - 2][isc]
+                        selectedsec = tablesectors[tablesectors.shape[1] - 3][isc]
                         sector = tablesectors[4][isc]
                         azimuth = float(tablesectors[6][isc] * 1)
                         bandhor = float(tablesectors[9][isc] * 1)
@@ -550,9 +653,8 @@ def geojsonsectors(elementtyp):
                         kmltext.writelines('"sector":"' + str(sector) + '",\n')
                         for lns in range(14, tablesectors.shape[1] - 2):
                             paramsector = tablesectors[lns][isc]
-                            kmltext.writelines('"' + fieldsect[lns] + '": "' + tablesectors[lns][isc] + '",')
+                            kmltext.writelines('"' + fieldsect[lns] + '": "' + tablesectors[lns][isc] + '",\n')
                         kmltext.writelines('"color":"' + str(colorsec) + '"},\n')
-                        #kmltext.writelines('"none":""},\n')
                         kmltext.writelines('"geometry": {\n')
                         kmltext.writelines('"type": "Polygon",\n')
 
@@ -586,7 +688,7 @@ def geojsonsectors(elementtyp):
 
         kmltext.writelines(']\n}\n')
         kmltext.close()
-        elementtyp == 'site'
+
         try:
             pathfile = 'del ' + fs.location + '/kml/static/fileserver/geomap.geojson'
             pathfile = pathfile.replace('/', os.sep)
@@ -601,11 +703,282 @@ def geojsonsectors(elementtyp):
         elementtyp == 'site'
         pass
 
+def exportgjson(element):
+    spatialite_path = 'mod_spatialite-5.0.1-win-amd64/mod_spatialite-5.0.1-win-amd64'
+    os.environ['PATH'] = spatialite_path + ';' + os.environ['PATH']
+    con = sqlite3.connect('dbtables.sqlite3')
+    con.enable_load_extension(True)
+    con.load_extension('mod_spatialite')  # laoding geometry column creation
+    cur = con.cursor()
+    con.load_extension("mod_spatialite")  # laoding geometry column creation
+
+    cur = con.cursor()
+    os.system("set SPATIALITE_SECURITY=relaxed")
+
+    query="select AsGeoJSON(geometry) from sectors"
+    cur.execute(query)
+
+    table = pd.DataFrame(cur.fetchall())
 
 
+def viewcreation(type):
+    con = sqlite3.connect('dbtables.sqlite3')
+    cur = con.cursor()
+
+    if type =="site" :
+
+        try:
+            cur.execute('DROP TABLE sitetemp;')
+        except:
+            pass
+
+        try:
+            query = 'CREATE TABLE sitetemp AS SELECT st.STID,st.AGREGATION,st.SITE,st.LAT,st.LON, vw.*,st.color,st.geometry FROM sites as st, temporaryview as vw WHERE st.SITE=vw.SITE'
+            cur.execute(query)
+        except:
+            pass
+
+        try:
+            cur.execute('DROP TABLE sectortemp;')
+        except:
+            pass
+
+        try:
+            query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
+            cur.execute(query)
+
+        except:
+            return ([], [])
+
+    if type =="sector" :
+        query = 'CREATE TABLE sectortemp AS SELECT sc.SECID,sc.AGREGATION,sc.STATE,sc.SITE,sc.SECTOR,sc.HEIGHT,sc.AZIMUTH,sc.MEC_TILT,sc.ELE_TILT,sc.BEAMWIDTH_H,sc.BEAMWIDTH_V,sc.LAT,sc.LON,sc.ALTITUDE, vw.*,sc.color,sc.geometry FROM sectors as sc, temporaryview as vw WHERE sc.SECTOR=vw.SECTOR '
+
+        try:
+            cur.execute('DROP TABLE sectortemp;')
+        except:
+            pass
+
+        try:
+            cur.execute(query)
+        except:
+            pass
+
+        try:
+            cur.execute('DROP TABLE sitetemp;')
+        except:
+            pass
 
 
+        try:
+            query = 'CREATE TABLE sitetemp AS SELECT st.* FROM sites as st, sitetemp as vw WHERE st.SITE=vw.SITE '
+            cur.execute(query)
+        except:
+            pass
+
+    return
+
+def filterfc(table,field,operator,value):
+
+    con = sqlite3.connect('dbtables.sqlite3')
+    cur = con.cursor()
+    try:
+        if operator=='=':
+            if table=='sites':
+                try:
+                    cur.execute('DROP TABLE sitetemp;')
+                except:
+                    pass
+                query='SELECT * FROM sites WHERE '+ field + str(operator) + '"' + str(value) +'";'
+
+                query = 'CREATE TABLE sitetemp AS ' + query
+                cur.execute(query)
+                try:
+                    cur.execute('DROP TABLE sectortemp;')
+                except:
+                    pass
+                query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
+                cur.execute(query)
+                query='SELECT * FROM sitetemp'
+            if table=='sectors':
+                try:
+                    cur.execute('DROP TABLE sectortemp;')
+                except:
+                    pass
+                query='SELECT * FROM sectors WHERE '+ field + str(operator) + '"' + str(value) +'";'
+
+                query = 'CREATE TABLE sectortemp AS ' + query
+                cur.execute(query)
+                try:
+                    cur.execute('DROP TABLE sitetemp;')
+                except:
+                    pass
+                query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
+                cur.execute(query)
+                query = 'SELECT * FROM sectortemp'
+        elif operator=='<>':
+            if table=='sites':
+                try:
+                    cur.execute('DROP TABLE sitetemp;')
+                except:
+                    pass
+                query='SELECT * FROM sites WHERE '+ field + str(operator) + '"' + str(value) +'";'
+
+                query = 'CREATE TABLE sitetemp AS ' + query
+                cur.execute(query)
+                try:
+                    cur.execute('DROP TABLE sectortemp;')
+                except:
+                    pass
+                query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
+                cur.execute(query)
+                query = 'SELECT * FROM sitetemp'
+            if table=='sectors':
+                try:
+                    cur.execute('DROP TABLE sectortemp;')
+                except:
+                    pass
+                query='SELECT * FROM sectors WHERE '+ field + str(operator) + '"' + str(value) +'";'
+
+                query = 'CREATE TABLE sectortemp AS ' + query
+                cur.execute(query)
+                try:
+                    cur.execute('DROP TABLE sitetemp;')
+                except:
+                    pass
+                query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
+                cur.execute(query)
+                query = 'SELECT * FROM sectortemp'
+        else:
+            if table=='sites':
+                const = '*1'
+                try:
+                    cur.execute('DROP TABLE sitetemp;')
+                except:
+                    pass
+                query='SELECT * FROM sites WHERE '+ field + const + str(operator) + '"' + value*1 +'";'
+
+                query = 'CREATE TABLE sitetemp AS ' + query
+                cur.execute(query)
+                try:
+                    cur.execute('DROP TABLE sectortemp;')
+                except:
+                    pass
+                query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
+                cur.execute(query)
+                query = 'SELECT * FROM sitetemp'
+            if table=='sectors':
+                const='*1'
+                try:
+                    cur.execute('DROP TABLE sectortemp;')
+                except:
+                    pass
+                query='SELECT * FROM sectors WHERE '+ field + const + str(operator) + '' + value*1 +';'
+
+                query = 'CREATE TABLE sectortemp AS ' + query
+                cur.execute(query)
+                try:
+                    cur.execute('DROP TABLE sitetemp;')
+                except:
+                    pass
+                query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
+                cur.execute(query)
+                query = 'SELECT * FROM sectortemp'
+    except:
+        pass
 
 
+    return(query)
 
 
+def rungeojson(element):
+
+    con = sqlite3.connect('dbtables.sqlite3')
+    cur = con.cursor()
+    spatialite_path = 'mod_spatialite-5.0.1-win-amd64/mod_spatialite-5.0.1-win-amd64'
+    os.environ['PATH'] = spatialite_path + ';' + os.environ['PATH']
+    con.enable_load_extension(True)
+    con.load_extension('mod_spatialite')
+
+    ##########querying sites##################
+    query=querysite()
+
+    cur.execute(query)
+    table = pd.DataFrame(cur.fetchall())
+    fs = FileSystemStorage()
+    try:
+        pathfile = 'del ' + fs.location + '/kml/static/fileserver/geomap.txt'
+        pathfile = pathfile.replace('/', os.sep)
+        os.system(pathfile)
+    except:
+        pass
+
+    geotext = open('kml/static/fileserver/geomap.txt', 'w')
+    geotext.writelines(['{ \n "type": "FeatureCollection",\n'])
+    geotext.writelines(['"features":[\n'])
+
+
+    geotext.close()
+    geotext = open('kml/static/fileserver/geomap.txt', 'a')
+
+    for i in range(table.shape[0]):
+        geotext.writelines(str(table[0][i]) + '\n')
+
+    ##########querying sectors##################
+    if element == 'sectorclick':
+        query = querysector()
+        cur.execute(query)
+        table = pd.DataFrame(cur.fetchall())
+        for i in range(table.shape[0]):
+            geotext.writelines(str(table[0][i]) + '\n')
+
+    geotext.writelines(
+        '{"type": "Feature",\n"properties": {"":""},\n"geometry": {\n"type": "Point",\n"coordinates": [0,0]\n}\n}')
+    geotext.writelines(']\n}\n')
+    geotext.close()
+
+    try:
+        pathfile = 'del ' + fs.location + '/kml/static/fileserver/geomap.geojson'
+        pathfile = pathfile.replace('/', os.sep)
+        os.system(pathfile)
+    except:
+        pass
+    pathfile = 'rename ' + fs.location + '/kml/static/fileserver/geomap.txt geomap.geojson'
+    pathfile = pathfile.replace('/', os.sep)
+    os.system(pathfile)
+
+    return
+
+
+def querysite():
+
+    con = sqlite3.connect('dbtables.sqlite3')
+    cur = con.cursor()
+    query = 'SELECT name FROM pragma_table_info("sitetemp") ORDER BY cid;'
+    cur.execute(query)
+    table = pd.DataFrame(cur.fetchall())
+    table=table[0].tolist()
+    query='select' + "'" + '{ "type" : "Feature", "properties" : { "site":"' + "'" + '|| site ||'
+
+    for i in range(5,len(table)-1):
+        query=query + "'" + '","' + table[i] + '":"' + "'" +'||'+table[i]+'||'
+
+
+    query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},'+"'"+' as geometry from sitetemp;'
+
+    return query
+
+def querysector():
+    con = sqlite3.connect('dbtables.sqlite3')
+    cur = con.cursor()
+    query = 'SELECT name FROM pragma_table_info("sectortemp") ORDER BY cid;'
+    cur.execute(query)
+    table = pd.DataFrame(cur.fetchall())
+    table=table[0].tolist()
+    query='select' + "'" + '{ "type" : "Feature", "properties" : { "site":"' + "'" + '|| site ||'
+
+    for i in range(14,len(table)-1):
+        query=query + "'" + '","' + table[i] + '":"' + "'" +'||'+table[i]+'||'
+
+
+    query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},'+"'"+' as geometry from sectortemp;'
+    return query

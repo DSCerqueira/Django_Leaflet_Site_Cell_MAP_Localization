@@ -68,15 +68,14 @@
 
                 </div>
                 <div class="col">
-                    <form action="{% url 'lsttb' %}" method="GET">
-                        <button type="submit" class="btn btn-primary" style="margin-left: 10px">Show Table</button>
+                    <div>
                         <select style="display: inline-block" name="tablesql">
-                            <option value="table">Select table</option>
+                            <option value="table">View tables</option>
                             {% for lista in listtable %}
                                 <option value="table">{{lista}}</option>
                             {%endfor%}
                         </select>
-                    </form>
+                    </div>
 
                 </div>
             </div>
@@ -100,11 +99,64 @@
                     </form>
 
                     <div class="col"style="padding-top: 30px; padding-left: 10px">
-                        <button  id="btRunQuery"  class="btn btn-primary">Run query</button>
+                        <div class="row">
+                           <button  id="btRunQuery"  class="btn btn-primary">Run query</button>
+                        </div>
+
+                            <div class="row" style="padding-top: 10px">
+                                <form method="GET" action="{% url 'fltables' %}">
+                                       <select class="form-select" id='selecttable' name="tableslst" >
+                                           <option selected>{{tableslst}}</option>
+                                           <option>Tables</option>
+                                           <option>sites</option>
+                                           <option>sectors</option>
+                                        </select>
+                                    <button id="btfiltertable" hidden></button>
+                                </form>
+                            </div>
+                        <form method="GET" action="{% url 'filtertbl' %}">
+                            <input id='inpttbfilter' type="text" name="tableslst" hidden value={{tableslst}}>
+                            <div class="row" style="padding-top: 10px">
+                               <select class="form-select" id='selectfield'  name="fieldfilter">
+                                   <option>Fields</option>
+                                   {% for lista in lsttbfiel %}
+                                        <option>{{lista}}</option>
+                                   {%endfor%}
+                               </select>
+                            </div>
+                            <div class="row" style="padding-top: 10px">
+                               <select class="form-select" id='selectop'  name="opfitler">
+                                   <option>Operators</option>
+                                   <option>=</option>
+                                   <option> > </option>
+                                   <option> >= </option>
+                                   <option> <= </option>
+                                   <option> <> </option>
+
+                                </select>
+                            </div>
+                            <div class="row" style="padding-top: 10px">
+                               <input id='inptvaluefilter' type="text" name="valuefilter"> <p>Input a Value</p>
+                            </div>
+                            <div class="row" style="padding-top: 10px">
+                               <button  id="btfilter"  class="btn btn-primary">Filter</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
         </div>
+        <div class="row" style=" padding-left: 10px">
+            <div class="col" >
 
+                <form action="{% url 'creatingviews' %}" method="GET" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="textview" name="textview" value='sector' style="display: none">
+                    <button class="btn btn-primary" id="btviewst" >Append Site Template</button>
+                    <button class="btn btn-primary" id="btviewsect"  >Append Sector Template</button>
+                </form>
+            </div>
+         </div>
         <!-- Output tabble -->
         <div class="Container" style="padding-top: 30px; padding-left: 10px">
             <div class="row" style="padding-left: 20px">
@@ -146,9 +198,6 @@
         <!-- Buttons setting up/exports -->
         <div class="container">
             <div class="row" style="padding-top: 30px; padding-bottom: 30px;">
-                <form style="padding-left: 10px;">
-                    <button type="button" class="btn btn-primary">Export CSV</button>
-                </form>
                 <form style="padding-left: 10px;" method="GET" action="{% url 'colorsite' %}">
                     <button type="submit" class="btn btn-primary">Set sites color</button>
                     <input type="color" name="colorset" value="#ff0000">
@@ -166,7 +215,7 @@
                     <input type="text" name="sectorclick" value="sectorclick" hidden>
                 </form>
                 <form style="padding-left: 10px;" method="GET" action="{% url 'clearmap' %}" >
-                    <button type="submit" class="btn btn-primary">Clear Map</button>
+                    <button id='btclmap' type="submit" class="btn btn-primary" >Clear Map</button>
                 </form>
             </div>
 
@@ -194,8 +243,10 @@
 
         </div>
 
+
         <!-- Buttons rename Script -->
-        <script type="text/javascript">
+        <script >
+
             const realBtnS=document.getElementById("sit")
             const customBtnS=document.getElementById("btsit1")
             const customBtnS2=document.getElementById("btsit2")
@@ -221,7 +272,18 @@
             const customSitedown=document.getElementById("downsite")
             const customSectordown=document.getElementById("downsector")
 
+            const FselectField=document.getElementById("selectfield")
+            const FselectTb=document.getElementById("selecttable")
+            const btField=document.getElementById("btfiltertable")
+
             const customUPkml=document.getElementById("uploadkml")
+
+            const btvwsect=document.getElementById("btviewsect")
+            const btvwsit=document.getElementById("btviewst")
+            const textview=document.getElementById("textview")
+
+
+
 
 
             <!-- Site -->
@@ -297,7 +359,24 @@
                  customBtpoload.click();
                  });
 
-    </script>
+            btvwsit.addEventListener("click",function() {
+                 customBtpoload.click();
+                 textview.value="site"
+                 });
+
+            FselectTb.addEventListener("change", function() {
+                if(FselectTb.value){
+                    btField.click();}
+                });
+
+            btvwsect.addEventListener("click",function() {
+                 customBtpoload.click();
+                 });
+
+
+
+         </script>
+
     {% else %}
         <p>User don't logged. Prooceed to <a href="{% url 'login' %}">login </p>
     {% endif %}

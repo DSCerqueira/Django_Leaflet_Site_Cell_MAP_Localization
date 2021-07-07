@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.views.static import serve
 from django.core.files.storage import FileSystemStorage
 from .general_func import upload_sites, upload_sectors, upload_table, runqdtb,listables,colorsetting,\
-        colorsettingsec, kmlsectors,geojsonsectors
-import os,csv,kml2geojson
+        colorsettingsec, kmlsectors,geojsonsectors,viewcreation, filterfc,rungeojson
+import os,csv,kml2geojson,time,sqlite3, pandas as pd
 
 
 class HomePageView(TemplateView):
@@ -16,6 +16,11 @@ class IndexPageView(TemplateView):
 
 class KmlCreatorView(TemplateView):
     template_name='kmlcreator.html'
+    def get_context_data(self):
+        context={}
+        listaresult=listables()
+        context['listtable']=listaresult
+        return context
 
 class DataManView(TemplateView):
     template_name='datamanagment.html'
@@ -26,7 +31,6 @@ class UploadingView(TemplateView):
 #try to load webbrowser
 def index(requests):
     r = requests.get('http://httpbin.org/status/418')
-    print(r.text)
     return HttpResponse('<pre>' + r.text + '</pre>')
 
 #export template CSV
@@ -101,7 +105,6 @@ def showtablesview(request):
     if request.method=='GET':
         context={}
         listaresult=listables()
-        print(listaresult)
         context['listtable']=listaresult
         return render(request, 'kmlcreator.html', context)
 
@@ -116,9 +119,6 @@ def exportkml(request):
 def downkml(request):
     filepath='kml/static/fileserver/geomap.kml'
     return serve(request,os.path.basename(filepath),os.path.dirname(filepath))
-
-
-
 
 def upfileview(request):
     try:
@@ -167,10 +167,8 @@ def colorviewsec(request):
     return HttpResponseRedirect('/kmlcreator/')
 
 def createkmlview(request):
-    #kmlsectors(request.GET['sectorclick'])
-    geojsonsectors(request.GET['sectorclick'])
+    rungeojson(request.GET['sectorclick'])
     return HttpResponseRedirect('/kmlcreator/')
-
 
 def clearmapview(request):
     if request.method=='GET':
@@ -178,6 +176,52 @@ def clearmapview(request):
         path = fs.location + "/kml/static/fileserver/geomap.geojson"
         try:
             os.remove(path)
+
+            return HttpResponseRedirect('/kmlcreator/')
         except:
-            pass
+            return HttpResponseRedirect('/kmlcreator/')
+
+def creatingview(request):
+    viewcreation(request.GET['textview'])
+    return HttpResponseRedirect('/kmlcreator/')
+
+def upfieldview(request):
+    con = sqlite3.connect('dbtables.sqlite3')
+    cur = con.cursor()
+    query='SELECT name FROM pragma_table_info("'+ request.GET['tableslst'] +'") ORDER BY cid;'
+    cur.execute(query)
+    tables = pd.DataFrame(cur.fetchall())
+    tables = tables.values.tolist()
+    serie = []
+    for i in tables:
+        serie.append(i[0])
+    serie = list(serie)
+    listaresult = listables()
+    cont = {}
+    cont['lsttbfiel']=serie
+    cont['tableslst'] = request.GET['tableslst']
+    cont['listtable'] = listaresult
+
+    return render(request, 'kmlcreator.html', cont)
+
+def filterview(request):
+    table=request.GET['tableslst']
+    field=request.GET['fieldfilter']
+    operator=request.GET['opfitler']
+    value=request.GET['valuefilter']
+    query=(filterfc(table,field,operator,value))
+
+    try:
+        context={}
+        result_table=runqdtb(query)
+        fields=result_table[0]
+        data=result_table[1]
+        context['fields']=fields
+        context['data']=data
+        return render(request,'kmlcreator.html',context)
+    except:
         return HttpResponseRedirect('/kmlcreator/')
+
+    return HttpResponseRedirect('/kmlcreator/')
+
+

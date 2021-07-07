@@ -1,7 +1,7 @@
 from django.urls import path,include
 from .views import HomePageView,IndexPageView, KmlCreatorView, DataManView,exportview, exportsite, \
                 uploadsiteview,uploadsectorview,uploadtableview, UploadingView,runqueryview, cleartableview, showtablesview, \
-                exportkml,upfileview, colorview,colorviewsec, createkmlview, clearmapview, downkml
+                exportkml,upfileview, colorview,colorviewsec, createkmlview, clearmapview, downkml,creatingview,upfieldview,filterview
 
 urlpatterns = [
                 path('kmlcreator/', KmlCreatorView.as_view(), name='kmlcreator'),
@@ -25,6 +25,9 @@ urlpatterns = [
                 path('colorsector/',colorviewsec,name='colorsector'),
                 path('kmlgenerator/',createkmlview,name='kmlgenerator'),
                 path('clearmap/',clearmapview,name='clearmap'),
+                path('creatingviews/',creatingview,name='creatingviews'),
+                path('fltables/',upfieldview,name='fltables'),
+                path('filtertbl/',filterview,name='filtertbl'),
                  ]
 
 # urlpatterns contém a lista de roteamentos de URLs
