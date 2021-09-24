@@ -315,7 +315,7 @@ def colorsetting(color):
         for i in lista:
             setcolor = setcolor + "'" +str(i[0]) + "',"
         setcolor = setcolor + '"")'
-        query = "UPDATE sites SET color='" + color + "' WHERE SITE IN " + setcolor;
+        query = "UPDATE sitetem SET color='" + color + "' WHERE SITE IN " + setcolor;
         cur.execute(query)
         con.commit()
         return
@@ -333,7 +333,7 @@ def colorsettingsec(color):
         for i in lista:
             setcolor = setcolor + "'" +str(i[0]) + "',"
         setcolor = setcolor + '"")'
-        query = "UPDATE sectors SET color='" + color + "' WHERE sector IN " + setcolor;
+        query = "UPDATE sectortemp SET color='" + color + "' WHERE sector IN " + setcolor;
         cur.execute(query)
         con.commit()
         return
@@ -725,7 +725,14 @@ def viewcreation(type):
     con = sqlite3.connect('dbtables.sqlite3')
     cur = con.cursor()
 
+
+
     if type =="site" :
+        try:
+            cur.execute('CREATE TABLE sitetempVW AS SELECT * FROM temporaryview;')
+        except:
+            cur.execute('DROP TABLE sitetempVW;')
+            cur.execute('CREATE TABLE sitetempVW AS SELECT * FROM temporaryview;')
 
         try:
             cur.execute('DROP TABLE sitetemp;')
@@ -733,7 +740,7 @@ def viewcreation(type):
             pass
 
         try:
-            query = 'CREATE TABLE sitetemp AS SELECT st.STID,st.AGREGATION,st.SITE,st.LAT,st.LON, vw.*,st.color,st.geometry FROM sites as st, temporaryview as vw WHERE st.SITE=vw.SITE'
+            query = 'CREATE TABLE sitetemp AS SELECT st.STID,st.AGREGATION,st.SITE,st.LAT,st.LON, vw.*,st.color,st.geometry FROM sites as st, sitetempVW as vw WHERE st.SITE=vw.SITE'
             cur.execute(query)
         except:
             pass
@@ -750,8 +757,15 @@ def viewcreation(type):
         except:
             return ([], [])
 
+
+
     if type =="sector" :
-        query = 'CREATE TABLE sectortemp AS SELECT sc.SECID,sc.AGREGATION,sc.STATE,sc.SITE,sc.SECTOR,sc.HEIGHT,sc.AZIMUTH,sc.MEC_TILT,sc.ELE_TILT,sc.BEAMWIDTH_H,sc.BEAMWIDTH_V,sc.LAT,sc.LON,sc.ALTITUDE, vw.*,sc.color,sc.geometry FROM sectors as sc, temporaryview as vw WHERE sc.SECTOR=vw.SECTOR '
+        try:
+            cur.execute('CREATE TABLE sectortempVW AS SELECT * FROM temporaryview;')
+        except:
+            cur.execute('DROP TABLE sectortempVW;')
+            cur.execute('CREATE TABLE sectortempVW AS SELECT * FROM temporaryview;')
+        query = 'CREATE TABLE sectortemp AS SELECT sc.SECID,sc.AGREGATION,sc.STATE,sc.SITE,sc.SECTOR,sc.HEIGHT,sc.AZIMUTH,sc.MEC_TILT,sc.ELE_TILT,sc.BEAMWIDTH_H,sc.BEAMWIDTH_V,sc.LAT,sc.LON,sc.ALTITUDE, vw.*,sc.color,sc.geometry FROM sectors as sc, sectortempVW as vw WHERE sc.SECTOR=vw.SECTOR '
 
         try:
             cur.execute('DROP TABLE sectortemp;')
@@ -902,7 +916,11 @@ def rungeojson(element):
     ##########querying sites##################
     query=querysite()
 
-    cur.execute(query)
+    try:
+        cur.execute(query)
+    except sqlite3.Error as error:
+        print(error)
+
     table = pd.DataFrame(cur.fetchall())
     fs = FileSystemStorage()
     try:
@@ -950,22 +968,25 @@ def rungeojson(element):
 
 
 def querysite():
+    try:
+        con = sqlite3.connect('dbtables.sqlite3')
+        cur = con.cursor()
+        query = 'SELECT name FROM pragma_table_info("sitetemp") ORDER BY cid;'
+        cur.execute(query)
+        table = pd.DataFrame(cur.fetchall())
+        table=table[0].tolist()
+        query='select ' + "'" + '{ "type" : "Feature", "properties" : { "site":"' + "'" + '|| site ||\n'
 
-    con = sqlite3.connect('dbtables.sqlite3')
-    cur = con.cursor()
-    query = 'SELECT name FROM pragma_table_info("sitetemp") ORDER BY cid;'
-    cur.execute(query)
-    table = pd.DataFrame(cur.fetchall())
-    table=table[0].tolist()
-    query='select' + "'" + '{ "type" : "Feature", "properties" : { "site":"' + "'" + '|| site ||'
+        for i in range(5,len(table)-1):
+            if table[i] != 'geometry':
+                query=query + "'" + '","' + table[i] + '":"' + "'" +'||['+table[i]+']||\n'
 
-    for i in range(5,len(table)-1):
-        query=query + "'" + '","' + table[i] + '":"' + "'" +'||'+table[i]+'||'
+        query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},\n'+"'"+' as geometry from sitetemp;'
 
-
-    query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},'+"'"+' as geometry from sitetemp;'
-
-    return query
+        return query
+    except:
+        query = " "
+        return query
 
 def querysector():
     con = sqlite3.connect('dbtables.sqlite3')
@@ -974,11 +995,12 @@ def querysector():
     cur.execute(query)
     table = pd.DataFrame(cur.fetchall())
     table=table[0].tolist()
-    query='select' + "'" + '{ "type" : "Feature", "properties" : { "site":"' + "'" + '|| site ||'
+    query='select ' + "'" + '{ "type" : "Feature", "properties" : { "site":"' + "'" + '|| site ||'
 
     for i in range(14,len(table)-1):
-        query=query + "'" + '","' + table[i] + '":"' + "'" +'||'+table[i]+'||'
+        if table[i] != 'geometry':
+            query=query + "'" + '","' + table[i] + '":"' + "'" +'||['+table[i]+']||\n'
 
 
-    query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},'+"'"+' as geometry from sectortemp;'
+    query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},\n'+"'"+' as geometry from sectortemp;'
     return query

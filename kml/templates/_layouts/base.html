@@ -3,7 +3,9 @@
 {% load static %}
     <head>
         <meta charset="UTF-8">
-		<meta http-equiv="" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv=“Pragma” content=”no-cache”>
+		<meta http-equiv=“Expires” content=”-1″>
+		<meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
 		<meta http-equiv="refresh" content="900; url=../login/logout"/>
         <title>Creating Kml Files</title>
 
@@ -25,7 +27,7 @@
 <body>
 	<div>
 		<div class="header_01">
-			<a style="text-align:left;" href="{% url 'index' %}"><img src="../../static/img/python.PNG" width="80" height="70" align="middle"/>Home</a>
+			<a style="text-align:left;" href="{% url 'index' %}"><img src="../static/img/python.PNG" width="80" height="70" align="middle"/>Home</a>
 		</div>
 		<div class="header_02">
 			<p style="text-align:center; font-size: 40px;">Developing Python</p>

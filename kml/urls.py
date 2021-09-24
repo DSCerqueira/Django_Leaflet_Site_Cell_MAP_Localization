@@ -1,12 +1,13 @@
 from django.urls import path,include
 from .views import HomePageView,IndexPageView, KmlCreatorView, DataManView,exportview, exportsite, \
                 uploadsiteview,uploadsectorview,uploadtableview, UploadingView,runqueryview, cleartableview, showtablesview, \
-                exportkml,upfileview, colorview,colorviewsec, createkmlview, clearmapview, downkml,creatingview,upfieldview,filterview
+                exportkml,upfileview, colorview,colorviewsec, createkmlview, clearmapview, downkml,creatingview,upfieldview,filterview,MapView,powerBIreportView
 
 urlpatterns = [
                 path('kmlcreator/', KmlCreatorView.as_view(), name='kmlcreator'),
                 path('datamanagment/', DataManView.as_view(), name='datamanagment'),
                 path('', HomePageView.as_view(),name='home'),
+                path('mapview', MapView.as_view(),name='mapview'),
                 path('login/', include('django.contrib.auth.urls')),
                 path('index/', IndexPageView.as_view(), name='index'),
                 path('downloadsec/',exportview,name='exportsec'),
@@ -15,6 +16,7 @@ urlpatterns = [
                 path('uploadsec/',uploadsectorview,name='uploadsec'),
                 path('uploadtab/',uploadtableview,name='uploadtab'),
                 path('loading/',UploadingView.as_view(),name='loading'),
+                path('report/',powerBIreportView.as_view(),name='report'),
                 path('runquery/',runqueryview,name='runquery'),
                 path('cleartb/',cleartableview,name='cleartb'),
                 path('lsttb/',showtablesview,name='lsttb'),

@@ -28,6 +28,12 @@ class DataManView(TemplateView):
 class UploadingView(TemplateView):
     template_name = 'loadertb.html'
 
+class powerBIreportView(TemplateView):
+    template_name = 'powerBI.html'
+
+class MapView(TemplateView):
+    template_name = 'mapwindow.html'
+
 #try to load webbrowser
 def index(requests):
     r = requests.get('http://httpbin.org/status/418')
