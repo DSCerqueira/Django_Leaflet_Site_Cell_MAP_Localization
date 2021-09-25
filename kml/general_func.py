@@ -729,11 +729,6 @@ def viewcreation(type):
 
     if type =="site" :
 
-        query = 'SELECT name FROM pragma_table_info("sites") ORDER BY cid;'
-        cur.execute(query)
-        listcol = pd.DataFrame(cur.fetchall())
-        listcol = listcol[0].tolist()
-
         query = 'SELECT name FROM pragma_table_info("temporaryview") ORDER BY cid;'
         cur.execute(query)
         listcolvw = pd.DataFrame(cur.fetchall())
@@ -741,9 +736,9 @@ def viewcreation(type):
 
         queryvw=" "
         for i in listcolvw:
-            if i not in listcol:
-                queryvw="vw."+i+","
-
+            print(i)
+            if i not in ['STID','SITE','LAT','LON','color','geometry']:
+                queryvw=queryvw+"vw."+i+","
 
         try:
             cur.execute('CREATE TABLE sitetempVW AS SELECT * FROM temporaryview;')
@@ -758,7 +753,6 @@ def viewcreation(type):
 
         try:
             query = 'CREATE TABLE sitetemp AS SELECT st.STID,st.AGREGATION,st.SITE,st.LAT,st.LON,' + queryvw + 'st.color,st.geometry FROM sites as st, sitetempVW as vw WHERE st.SITE=vw.SITE'
-            print(query)
             cur.execute(query)
         except:
             pass
@@ -778,10 +772,6 @@ def viewcreation(type):
 
 
     if type =="sector" :
-        query = 'SELECT name FROM pragma_table_info("sector") ORDER BY cid;'
-        cur.execute(query)
-        listcol = pd.DataFrame(cur.fetchall())
-        listcol = listcol[0].tolist()
 
         query = 'SELECT name FROM pragma_table_info("temporaryview") ORDER BY cid;'
         cur.execute(query)
@@ -790,8 +780,8 @@ def viewcreation(type):
 
         queryvw = " "
         for i in listcolvw:
-            if i not in listcol:
-                queryvw = "vw." + i + ","
+            if i not in ['SECID','AGREGATION','SATATE','SITE','SECTOR','HEIGHT','AZIMUTH','MEC_TILT','ELE_TILT','BEAMWIDTH_H','BEAMWIDTH_V','LAT','LON','ALTITUDE','color','geometry']:
+                queryvw = queryvw+"vw." + i + ","
 
 
         try:
