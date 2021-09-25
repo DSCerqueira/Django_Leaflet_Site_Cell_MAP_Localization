@@ -728,6 +728,23 @@ def viewcreation(type):
 
 
     if type =="site" :
+
+        query = 'SELECT name FROM pragma_table_info("sites") ORDER BY cid;'
+        cur.execute(query)
+        listcol = pd.DataFrame(cur.fetchall())
+        listcol = listcol[0].tolist()
+
+        query = 'SELECT name FROM pragma_table_info("temporaryview") ORDER BY cid;'
+        cur.execute(query)
+        listcolvw = pd.DataFrame(cur.fetchall())
+        listcolvw = listcolvw[0].tolist()
+
+        queryvw=" "
+        for i in listcolvw:
+            if i not in listcol:
+                queryvw="vw."+i+","
+
+
         try:
             cur.execute('CREATE TABLE sitetempVW AS SELECT * FROM temporaryview;')
         except:
@@ -740,7 +757,8 @@ def viewcreation(type):
             pass
 
         try:
-            query = 'CREATE TABLE sitetemp AS SELECT st.STID,st.AGREGATION,st.SITE,st.LAT,st.LON, vw.*,st.color,st.geometry FROM sites as st, sitetempVW as vw WHERE st.SITE=vw.SITE'
+            query = 'CREATE TABLE sitetemp AS SELECT st.STID,st.AGREGATION,st.SITE,st.LAT,st.LON,' + queryvw + 'st.color,st.geometry FROM sites as st, sitetempVW as vw WHERE st.SITE=vw.SITE'
+            print(query)
             cur.execute(query)
         except:
             pass
@@ -760,12 +778,28 @@ def viewcreation(type):
 
 
     if type =="sector" :
+        query = 'SELECT name FROM pragma_table_info("sector") ORDER BY cid;'
+        cur.execute(query)
+        listcol = pd.DataFrame(cur.fetchall())
+        listcol = listcol[0].tolist()
+
+        query = 'SELECT name FROM pragma_table_info("temporaryview") ORDER BY cid;'
+        cur.execute(query)
+        listcolvw = pd.DataFrame(cur.fetchall())
+        listcolvw = listcolvw[0].tolist()
+
+        queryvw = " "
+        for i in listcolvw:
+            if i not in listcol:
+                queryvw = "vw." + i + ","
+
+
         try:
             cur.execute('CREATE TABLE sectortempVW AS SELECT * FROM temporaryview;')
         except:
             cur.execute('DROP TABLE sectortempVW;')
             cur.execute('CREATE TABLE sectortempVW AS SELECT * FROM temporaryview;')
-        query = 'CREATE TABLE sectortemp AS SELECT sc.SECID,sc.AGREGATION,sc.STATE,sc.SITE,sc.SECTOR,sc.HEIGHT,sc.AZIMUTH,sc.MEC_TILT,sc.ELE_TILT,sc.BEAMWIDTH_H,sc.BEAMWIDTH_V,sc.LAT,sc.LON,sc.ALTITUDE, vw.*,sc.color,sc.geometry FROM sectors as sc, sectortempVW as vw WHERE sc.SECTOR=vw.SECTOR '
+        query = 'CREATE TABLE sectortemp AS SELECT sc.SECID,sc.AGREGATION,sc.STATE,sc.SITE,sc.SECTOR,sc.HEIGHT,sc.AZIMUTH,sc.MEC_TILT,sc.ELE_TILT,sc.BEAMWIDTH_H,sc.BEAMWIDTH_V,sc.LAT,sc.LON,sc.ALTITUDE,' + queryvw + 'sc.color,sc.geometry FROM sectors as sc, sectortempVW as vw WHERE sc.SECTOR=vw.SECTOR '
 
         try:
             cur.execute('DROP TABLE sectortemp;')
@@ -812,7 +846,13 @@ def filterfc(table,field,operator,value):
                     pass
                 query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
                 cur.execute(query)
-                query='SELECT * FROM sitetemp'
+                query = 'SELECT * FROM sitetemp'
+                try:
+                    cur.execute('DROP TABLE temporaryview;')
+                except:
+                    pass
+                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sitetemp')
+
             if table=='sectors':
                 try:
                     cur.execute('DROP TABLE sectortemp;')
@@ -829,16 +869,25 @@ def filterfc(table,field,operator,value):
                 query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
                 cur.execute(query)
                 query = 'SELECT * FROM sectortemp'
+                try:
+                    cur.execute('DROP TABLE temporaryview;')
+                except:
+                    pass
+                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sectortemp')
         elif operator=='<>':
+
             if table=='sites':
+
                 try:
                     cur.execute('DROP TABLE sitetemp;')
                 except:
                     pass
+
                 query='SELECT * FROM sites WHERE '+ field + str(operator) + '"' + str(value) +'";'
 
                 query = 'CREATE TABLE sitetemp AS ' + query
                 cur.execute(query)
+
                 try:
                     cur.execute('DROP TABLE sectortemp;')
                 except:
@@ -846,6 +895,14 @@ def filterfc(table,field,operator,value):
                 query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
                 cur.execute(query)
                 query = 'SELECT * FROM sitetemp'
+
+
+                try:
+                    cur.execute('DROP TABLE temporaryview;')
+                except:
+                    pass
+                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sitetemp')
+
             if table=='sectors':
                 try:
                     cur.execute('DROP TABLE sectortemp;')
@@ -862,6 +919,11 @@ def filterfc(table,field,operator,value):
                 query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
                 cur.execute(query)
                 query = 'SELECT * FROM sectortemp'
+                try:
+                    cur.execute('DROP TABLE temporaryview;')
+                except:
+                    pass
+                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sectortemp')
         else:
             if table=='sites':
                 const = '*1'
@@ -880,6 +942,11 @@ def filterfc(table,field,operator,value):
                 query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
                 cur.execute(query)
                 query = 'SELECT * FROM sitetemp'
+                try:
+                    cur.execute('DROP TABLE temporaryview;')
+                except:
+                    pass
+                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sitetemp')
             if table=='sectors':
                 const='*1'
                 try:
@@ -897,6 +964,11 @@ def filterfc(table,field,operator,value):
                 query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
                 cur.execute(query)
                 query = 'SELECT * FROM sectortemp'
+                try:
+                    cur.execute('DROP TABLE temporaryview;')
+                except:
+                    pass
+                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sectortemp')
     except:
         pass
 
