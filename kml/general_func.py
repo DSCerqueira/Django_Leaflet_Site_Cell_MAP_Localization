@@ -818,7 +818,7 @@ def viewcreation(type):
             pass
 
         try:
-            query = 'CREATE TABLE sectortemp AS SELECT '+querysc + queryvw + 'sc.color,sc.geometry FROM sectortemptp as sc, sectortempVW as vw WHERE sc.SECTOR=vw.SECTOR '
+            query = 'CREATE TABLE sectortemp AS SELECT '+querysc + queryvw + 'sc.color,sc.geometry FROM sectortemptp as sc LEFT JOIN sectortempVW as vw ON sc.SECTOR=vw.SECTOR '
             cur.execute(query)
         except:
             pass
