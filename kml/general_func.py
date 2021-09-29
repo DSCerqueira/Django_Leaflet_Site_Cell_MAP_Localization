@@ -315,7 +315,7 @@ def colorsetting(color):
         for i in lista:
             setcolor = setcolor + "'" +str(i[0]) + "',"
         setcolor = setcolor + '"")'
-        query = "UPDATE sitetem SET color='" + color + "' WHERE SITE IN " + setcolor;
+        query = "UPDATE sitetemp SET color='" + color + "' WHERE SITE IN " + setcolor;
         cur.execute(query)
         con.commit()
         return
@@ -728,17 +728,27 @@ def viewcreation(type):
 
 
     if type =="site" :
-
         query = 'SELECT name FROM pragma_table_info("temporaryview") ORDER BY cid;'
         cur.execute(query)
+
         listcolvw = pd.DataFrame(cur.fetchall())
         listcolvw = listcolvw[0].tolist()
 
+        query = 'SELECT name FROM pragma_table_info("sitetemp") ORDER BY cid;'
+        cur.execute(query)
+
+        listcolst = pd.DataFrame(cur.fetchall())
+        listcolst = listcolst[0].tolist()
+
         queryvw=" "
         for i in listcolvw:
-            print(i)
-            if i not in ['STID','SITE','LAT','LON','color','geometry']:
+            if i not in listcolst:
                 queryvw=queryvw+"vw."+i+","
+
+        queryst = " "
+        for i in listcolvw:
+            if i not in ['color','geometry']:
+                queryst = queryst + "st." + i + ","
 
         try:
             cur.execute('CREATE TABLE sitetempVW AS SELECT * FROM temporaryview;')
@@ -747,28 +757,21 @@ def viewcreation(type):
             cur.execute('CREATE TABLE sitetempVW AS SELECT * FROM temporaryview;')
 
         try:
+            cur.execute('CREATE TABLE sitetemptp AS SELECT * FROM sitetemp;')
+        except:
+            cur.execute('DROP TABLE sitetemptp;')
+            cur.execute('CREATE TABLE sitetemptp AS SELECT * FROM sitetemp;')
+
+        try:
             cur.execute('DROP TABLE sitetemp;')
         except:
             pass
 
         try:
-            query = 'CREATE TABLE sitetemp AS SELECT st.STID,st.AGREGATION,st.SITE,st.LAT,st.LON,' + queryvw + 'st.color,st.geometry FROM sites as st, sitetempVW as vw WHERE st.SITE=vw.SITE'
+            query = 'CREATE TABLE sitetemp AS SELECT '+ queryst + queryvw + 'st.color,st.geometry FROM sitetemptp as st LEFT JOIN sitetempVW as vw on st.SITE=vw.SITE'
             cur.execute(query)
         except:
             pass
-
-        try:
-            cur.execute('DROP TABLE sectortemp;')
-        except:
-            pass
-
-        try:
-            query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
-            cur.execute(query)
-
-        except:
-            return ([], [])
-
 
 
     if type =="sector" :
@@ -778,10 +781,21 @@ def viewcreation(type):
         listcolvw = pd.DataFrame(cur.fetchall())
         listcolvw = listcolvw[0].tolist()
 
+        query = 'SELECT name FROM pragma_table_info("sectortemp") ORDER BY cid;'
+        cur.execute(query)
+
+        listcolsc = pd.DataFrame(cur.fetchall())
+        listcolsc = listcolsc[0].tolist()
+
         queryvw = " "
         for i in listcolvw:
-            if i not in ['SECID','AGREGATION','SATATE','SITE','SECTOR','HEIGHT','AZIMUTH','MEC_TILT','ELE_TILT','BEAMWIDTH_H','BEAMWIDTH_V','LAT','LON','ALTITUDE','color','geometry']:
+            if i not in listcolsc:
                 queryvw = queryvw+"vw." + i + ","
+
+        querysc = " "
+        for i in listcolsc:
+            if i not in ['color', 'geometry']:
+                querysc = querysc + "sc." + i + ","
 
 
         try:
@@ -789,7 +803,14 @@ def viewcreation(type):
         except:
             cur.execute('DROP TABLE sectortempVW;')
             cur.execute('CREATE TABLE sectortempVW AS SELECT * FROM temporaryview;')
-        query = 'CREATE TABLE sectortemp AS SELECT sc.SECID,sc.AGREGATION,sc.STATE,sc.SITE,sc.SECTOR,sc.HEIGHT,sc.AZIMUTH,sc.MEC_TILT,sc.ELE_TILT,sc.BEAMWIDTH_H,sc.BEAMWIDTH_V,sc.LAT,sc.LON,sc.ALTITUDE,' + queryvw + 'sc.color,sc.geometry FROM sectors as sc, sectortempVW as vw WHERE sc.SECTOR=vw.SECTOR '
+
+        try:
+            cur.execute('CREATE TABLE sectortemptp AS SELECT * FROM sectortemp;')
+        except:
+            cur.execute('DROP TABLE sectortemptp;')
+            cur.execute('CREATE TABLE sectortemptp AS SELECT * FROM sectortemp;')
+
+
 
         try:
             cur.execute('DROP TABLE sectortemp;')
@@ -797,18 +818,7 @@ def viewcreation(type):
             pass
 
         try:
-            cur.execute(query)
-        except:
-            pass
-
-        try:
-            cur.execute('DROP TABLE sitetemp;')
-        except:
-            pass
-
-
-        try:
-            query = 'CREATE TABLE sitetemp AS SELECT st.* FROM sites as st, sitetemp as vw WHERE st.SITE=vw.SITE '
+            query = 'CREATE TABLE sectortemp AS SELECT '+querysc + queryvw + 'sc.color,sc.geometry FROM sectortemptp as sc, sectortempVW as vw WHERE sc.SECTOR=vw.SECTOR '
             cur.execute(query)
         except:
             pass
@@ -822,43 +832,45 @@ def filterfc(table,field,operator,value):
     try:
         if operator=='=':
             if table=='sites':
-                try:
-                    cur.execute('DROP TABLE sitetemp;')
-                except:
-                    pass
-                query='SELECT * FROM sites WHERE '+ field + str(operator) + '"' + str(value) +'";'
 
-                query = 'CREATE TABLE sitetemp AS ' + query
+                #query='SELECT * FROM sitetemp WHERE '+ field + str(operator) + '"' + str(value) +'";'
+                query = 'UPDATE sitetemp SET SELECTOR="False";'
                 cur.execute(query)
-                try:
-                    cur.execute('DROP TABLE sectortemp;')
-                except:
-                    pass
-                query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
+                con.commit()
+                query='UPDATE sitetemp SET SELECTOR="True" WHERE '+ field + str(operator) + '"' + str(value) +'";'
                 cur.execute(query)
-                query = 'SELECT * FROM sitetemp'
+                con.commit()
+
+                query = 'UPDATE sectortemp SET SELECTOR="False";'
+                cur.execute(query)
+                con.commit()
+                query = 'UPDATE sectortemp SET SELECTOR="True" WHERE SITE IN (SELECT SITE FROM sitetemp WHERE SELECTOR="True"); '
+                cur.execute(query)
+                con.commit()
+                query = 'SELECT * FROM sitetemp WHERE SELECTOR="True";'
                 try:
                     cur.execute('DROP TABLE temporaryview;')
                 except:
                     pass
-                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sitetemp')
+                cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sitetemp WHERE SELECTOR="True"')
 
             if table=='sectors':
-                try:
-                    cur.execute('DROP TABLE sectortemp;')
-                except:
-                    pass
-                query='SELECT * FROM sectors WHERE '+ field + str(operator) + '"' + str(value) +'";'
 
-                query = 'CREATE TABLE sectortemp AS ' + query
+                query = 'UPDATE sectortemp SET SELECTOR="False";'
                 cur.execute(query)
-                try:
-                    cur.execute('DROP TABLE sitetemp;')
-                except:
-                    pass
-                query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
+                con.commit()
+                query = 'UPDATE sectortemp SET SELECTOR="True" WHERE ' + field + str(operator) + '"' + str(value) + '";'
                 cur.execute(query)
-                query = 'SELECT * FROM sectortemp'
+                con.commit()
+
+                query = 'UPDATE sitetemp SET SELECTOR="False";'
+                cur.execute(query)
+                con.commit()
+                query = 'UPDATE sitetemp SET SELECTOR="True" WHERE SITE IN (SELECT SITE FROM sectortemp WHERE SELECTOR="True"); '
+                cur.execute(query)
+                con.commit()
+                query = 'SELECT * FROM sectortemp WHERE SELECTOR="True";'
+
                 try:
                     cur.execute('DROP TABLE temporaryview;')
                 except:
@@ -868,23 +880,20 @@ def filterfc(table,field,operator,value):
 
             if table=='sites':
 
-                try:
-                    cur.execute('DROP TABLE sitetemp;')
-                except:
-                    pass
-
-                query='SELECT * FROM sites WHERE '+ field + str(operator) + '"' + str(value) +'";'
-
-                query = 'CREATE TABLE sitetemp AS ' + query
+                query = 'UPDATE sitetemp SET SELECTOR="False";'
                 cur.execute(query)
-
-                try:
-                    cur.execute('DROP TABLE sectortemp;')
-                except:
-                    pass
-                query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
+                con.commit()
+                query = 'UPDATE sitetemp SET SELECTOR="True" WHERE ' + field + str(operator) + '"' + str(value) + '";'
                 cur.execute(query)
-                query = 'SELECT * FROM sitetemp'
+                con.commit()
+
+                query = 'UPDATE sectortemp SET SELECTOR="False";'
+                cur.execute(query)
+                con.commit()
+                query = 'UPDATE sectortemp SET SELECTOR="True" WHERE SITE IN (SELECT SITE FROM sitetemp WHERE SELECTOR="True"); '
+                cur.execute(query)
+                con.commit()
+                query = 'SELECT * FROM sitetemp WHERE SELECTOR="True";'
 
 
                 try:
@@ -894,21 +903,22 @@ def filterfc(table,field,operator,value):
                 cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sitetemp')
 
             if table=='sectors':
-                try:
-                    cur.execute('DROP TABLE sectortemp;')
-                except:
-                    pass
-                query='SELECT * FROM sectors WHERE '+ field + str(operator) + '"' + str(value) +'";'
 
-                query = 'CREATE TABLE sectortemp AS ' + query
+                query = 'UPDATE sectortemp SET SELECTOR="False";'
                 cur.execute(query)
-                try:
-                    cur.execute('DROP TABLE sitetemp;')
-                except:
-                    pass
-                query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
+                con.commit()
+                query = 'UPDATE sectortemp SET SELECTOR="True" WHERE ' + field + str(operator) + '"' + str(value) + '";'
                 cur.execute(query)
-                query = 'SELECT * FROM sectortemp'
+                con.commit()
+
+                query = 'UPDATE sitetemp SET SELECTOR="False";'
+                cur.execute(query)
+                con.commit()
+                query = 'UPDATE sitetemp SET SELECTOR="True" WHERE SITE IN (SELECT SITE FROM sectortemp WHERE SELECTOR="True"); '
+                cur.execute(query)
+                con.commit()
+                query = 'SELECT * FROM sectortemp WHERE SELECTOR="True";'
+
                 try:
                     cur.execute('DROP TABLE temporaryview;')
                 except:
@@ -917,21 +927,20 @@ def filterfc(table,field,operator,value):
         else:
             if table=='sites':
                 const = '*1'
-                try:
-                    cur.execute('DROP TABLE sitetemp;')
-                except:
-                    pass
-                query='SELECT * FROM sites WHERE '+ field + const + str(operator) + '"' + value*1 +'";'
 
-                query = 'CREATE TABLE sitetemp AS ' + query
+                query = 'UPDATE sitetemp SET SELECTOR="False";'
                 cur.execute(query)
-                try:
-                    cur.execute('DROP TABLE sectortemp;')
-                except:
-                    pass
-                query = 'CREATE TABLE sectortemp AS SELECT sc.* FROM sectors as sc, sitetemp as vw WHERE sc.SITE=vw.SITE '
+                query = 'UPDATE sitetemp SET SELECTOR="True" WHERE ' + field + str(operator) + '"' + value*1 +'";'
                 cur.execute(query)
-                query = 'SELECT * FROM sitetemp'
+
+                query = 'UPDATE sectortemp SET SELECTOR="False";'
+                cur.execute(query)
+                con.commit()
+                query = 'UPDATE sectortemp SET SELECTOR="True" WHERE SITE IN (SELECT SITE FROM sitetemp WHERE SELECTOR="True"); '
+                cur.execute(query)
+                con.commit()
+                query = 'SELECT * FROM sitetemp WHERE SELECTOR="True";'
+
                 try:
                     cur.execute('DROP TABLE temporaryview;')
                 except:
@@ -939,21 +948,23 @@ def filterfc(table,field,operator,value):
                 cur.execute('CREATE VIEW temporaryview AS SELECT * FROM sitetemp')
             if table=='sectors':
                 const='*1'
-                try:
-                    cur.execute('DROP TABLE sectortemp;')
-                except:
-                    pass
-                query='SELECT * FROM sectors WHERE '+ field + const + str(operator) + '' + value*1 +';'
 
-                query = 'CREATE TABLE sectortemp AS ' + query
+                query = 'UPDATE sectortemp SET SELECTOR="False";'
                 cur.execute(query)
-                try:
-                    cur.execute('DROP TABLE sitetemp;')
-                except:
-                    pass
-                query = 'CREATE TABLE sitetemp AS SELECT sc.* FROM sites as sc, sectortemp as vw WHERE sc.SITE=vw.SITE '
+                con.commit()
+                query = 'UPDATE sectortemp SET SELECTOR="True" WHERE ' + field + str(operator) + '"' + value*1 +'";'
                 cur.execute(query)
-                query = 'SELECT * FROM sectortemp'
+                con.commit()
+
+                query = 'UPDATE sitetemp SET SELECTOR="False";'
+                cur.execute(query)
+                con.commit()
+                query = 'UPDATE sitetemp SET SELECTOR="True" WHERE SITE IN (SELECT SITE FROM sectortemp WHERE SELECTOR="True"); '
+                cur.execute(query)
+                con.commit()
+                query = 'SELECT * FROM sectortemp WHERE SELECTOR="True";'
+
+
                 try:
                     cur.execute('DROP TABLE temporaryview;')
                 except:
@@ -1043,7 +1054,7 @@ def querysite():
             if table[i] != 'geometry':
                 query=query + "'" + '","' + table[i] + '":"' + "'" +'||['+table[i]+']||\n'
 
-        query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},\n'+"'"+' as geometry from sitetemp;'
+        query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},\n'+"'"+' as geometry from sitetemp WHERE SELECTOR="True";'
 
         return query
     except:
@@ -1064,5 +1075,5 @@ def querysector():
             query=query + "'" + '","' + table[i] + '":"' + "'" +'||['+table[i]+']||\n'
 
 
-    query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},\n'+"'"+' as geometry from sectortemp;'
+    query=query+ "'" + '"},"geometry":' + "'" + ' || AsGeoJSON(geometry) ||'+"'"+'},\n'+"'"+' as geometry from sectortemp WHERE SELECTOR="True";'
     return query
