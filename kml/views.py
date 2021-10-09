@@ -216,7 +216,7 @@ def filterview(request):
     operator=request.GET['opfitler']
     value=request.GET['valuefilter']
     query=(filterfc(table,field,operator,value))
-    print(query)
+
     try:
         context={}
         result_table=runqdtb(query)
